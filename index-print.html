@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy in Practice — Print</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Lora:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* === Print-friendly tweaks === */
+    html, body {
+      background: var(--cream);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color-adjust: exact;
+    }
+
+    /* Remove sticky/fixed chrome for print */
+    .nav {
+      position: static !important;
+      backdrop-filter: none !important;
+    }
+    body::before { display: none !important; }
+
+    /* Hide the floating Tweaks panel + ticker animation */
+    [data-tweaks-panel], .tweaks-panel, #tweaks-root,
+    .ribbon { display: none !important; }
+
+    /* Disable hover transforms, kill any animation */
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    /* Reveal-on-scroll elements should be fully visible */
+    .reveal, .reveal.in { opacity: 1 !important; transform: none !important; }
+
+    /* Make wrap a bit wider for paper */
+    .wrap, .wrap-narrow { max-width: 1100px; }
+
+    /* Page setup */
+    @page {
+      size: A4 portrait;
+      margin: 14mm 12mm;
+    }
+
+    @media print {
+      html, body { width: 210mm; }
+      .nav { display: none !important; }
+
+      /* Force background colors to print */
+      .hero, .mission, .journey, .resources, .about,
+      .track, .article, .log, .stamp, .badge-card,
+      .sticker-cta, .pill-cta, .deliverable, .cert,
+      .tl-item.now, footer, .sticker, .res-tag {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Each major section starts on a fresh page */
+      .hero, .mission, .roadmap, .journey, .articles,
+      .resources, .about, footer { break-before: page; }
+      .hero { break-before: auto; }
+
+      /* Avoid splitting key blocks */
+      .track, .phase, .article, .log, .res-group,
+      .stamp, .bio, .tl-item, .cert,
+      .section-head, .mission-grid, .about-grid,
+      .res-head, .res-item { break-inside: avoid; }
+
+      /* Slim down enormous heros for paper */
+      .hero { padding: 30px 0 40px !important; }
+      .hero h1 { font-size: 64px !important; line-height: 0.96 !important; }
+      .section-head { padding-top: 36px !important; padding-bottom: 18px !important; }
+      .section-head h2 { font-size: 44px !important; }
+      .section-head .num { font-size: 84px !important; }
+      .track { padding: 36px 24px !important; }
+      .track-roman { font-size: 64px !important; }
+      .track-title { font-size: 34px !important; }
+      .mission { padding: 36px 0 !important; }
+      .mission .big-q { font-size: 120px !important; }
+      .mission-quote { font-size: 28px !important; }
+
+      /* Articles & tracks already grid — tighten gap */
+      .articles-grid { gap: 12px !important; }
+      .article { min-height: auto !important; padding: 22px 20px !important; }
+      .timeline { grid-template-columns: repeat(3, 1fr) !important; }
+      .tl-item { border-right: 1px solid var(--rule) !important; border-bottom: 1px solid var(--rule) !important; min-height: 160px !important; }
+      .logs { gap: 14px !important; }
+
+      /* Drop floating badge cards on print — they overlap */
+      .badge-card { display: none !important; }
+
+      /* Stamps and stickers shouldn't rotate weirdly on the page */
+      .stamp, .sticker, .sticker-cta { transform: none !important; box-shadow: none !important; }
+      .stamp { border: 2px solid var(--plum) !important; }
+
+      /* Reduce huge gaps */
+      .roadmap, .resources, .about, footer { padding-top: 0 !important; padding-bottom: 36px !important; }
+
+      /* Headings keep with following content */
+      h1, h2, h3, h4 { break-after: avoid; }
+
+      /* External links — print the URL after the text */
+      a.res-item[href]:after {
+        content: "  " attr(href);
+        font-family: var(--mono);
+        font-size: 9px;
+        color: var(--muted);
+        word-break: break-all;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="data.js"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+
+  <!-- Auto-print: wait for fonts + babel render -->
+  <script type="text/babel" data-presets="env,react">
+    (async () => {
+      try { await document.fonts.ready; } catch (e) {}
+      const waitForRoot = () => new Promise((resolve) => {
+        const check = () => {
+          if (document.querySelector("#root").childElementCount > 0) return resolve();
+          requestAnimationFrame(check);
+        };
+        check();
+      });
+      await waitForRoot();
+      // Settle layout + tweaks JS application
+      await new Promise((r) => setTimeout(r, 700));
+      window.print();
+    })();
+  </script>
+</body>
+</html>

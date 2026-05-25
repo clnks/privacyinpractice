@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Build / generated output
+_site/
+
+# Local tooling / editor
+_check/
+.image-slots.state.json
+uploads/
+
+# Node (if added later)
+node_modules/

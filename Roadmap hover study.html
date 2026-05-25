@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roadmap hover study — Privacy in Practice</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=Lora:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* exact tokens from your styles.css */
+    --cream: #f1e8d7;
+    --paper: #f9f1e1;
+    --bg-2: #e8dfcd;
+    --lavender: #c4b1dd;
+    --plum: #0d0a10;
+    --sun: #f4e070;
+    --ink: var(--plum);
+    --ink-2: #2a2530;
+    --muted: #6e6675;
+    --rule: rgba(13, 10, 16, 0.14);
+    --rule-strong: rgba(13, 10, 16, 0.32);
+
+    /* NEW: an accent that actually passes AA on cream.
+       Same hue family (~295) as lavender, but ~7.5:1 on cream. */
+    --accent-strong: #4a2d7a;   /* oklch ~0.36 0.16 295 */
+    --accent-soft:   #ece2f5;   /* light lavender tint for fills */
+
+    --display: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+    --serif: "Lora", Georgia, serif;
+    --mono: "Bricolage Grotesque", monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 64px 40px 120px; }
+
+  /* ── intro ─────────────────────────────────────────── */
+  .intro { margin-bottom: 72px; }
+  .intro .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .intro h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.015em;
+    line-height: 1.02;
+    margin: 0 0 22px;
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+  .intro .lede {
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 60ch;
+    margin: 0 0 32px;
+  }
+  .intro .lede em { font-style: italic; color: var(--ink); }
+
+  .diag {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .diag-card {
+    border: 1px solid var(--rule-strong);
+    background: var(--paper);
+    padding: 18px 20px;
+  }
+  .diag-card h4 {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    margin: 0 0 8px;
+    color: var(--muted);
+  }
+  .diag-card p {
+    font-family: var(--serif);
+    font-size: 15px; line-height: 1.45;
+    margin: 0;
+    color: var(--ink-2);
+  }
+  .diag-card code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12.5px;
+    background: rgba(13,10,16,0.06);
+    padding: 1px 6px; border-radius: 3px;
+    color: var(--ink);
+  }
+  .ratio {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  .ratio.fail { color: #9b1c1c; }
+  .ratio.pass { color: #2c6a3f; }
+
+  /* ── variant frame ─────────────────────────────────── */
+  .variant { margin-bottom: 56px; }
+  .variant-head {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule-strong);
+    margin-bottom: 24px;
+  }
+  .variant-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .variant-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    line-height: 1.15;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .variant-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 16px;
+    max-width: 60ch;
+    margin: 0;
+  }
+  .variant-badges {
+    display: flex;
+    gap: 6px;
+    align-self: center;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .badge.good { color: #2c6a3f; border-color: rgba(44,106,63,0.4); }
+  .badge.bad  { color: #9b1c1c; border-color: rgba(155,28,28,0.4); }
+
+  .variant-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-top: 18px;
+    padding: 14px 0 0;
+    border-top: 1px dotted var(--rule);
+  }
+  .variant-notes div { font-family: var(--serif); font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+  .variant-notes b {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hint {
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hint::before { content: "↳ "; }
+
+  /* ─────────────────────────────────────────────────────
+     PHASE ROW — base markup (matches roadmap.html structure)
+     Per-variant overrides via .v1, .v2, ... wrappers
+     ───────────────────────────────────────────────────── */
+  .phase {
+    display: grid;
+    grid-template-columns: 80px 1fr 1.3fr;
+    gap: 40px;
+    padding: 28px 24px;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+    transition: background .2s, transform .25s, box-shadow .2s;
+    position: relative;
+    cursor: pointer;
+  }
+  .phase:last-child { border-bottom: 1px solid var(--rule); }
+  .phase .n {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    padding: 6px 10px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+    width: max-content;
+    align-self: start;
+    transition: color .2s, border-color .2s, background .2s;
+  }
+  .phase-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);              /* fixed: was --accent (lavender on cream) */
+    margin-bottom: 8px;
+    display: inline-block;
+    transition: color .2s;
+  }
+  .phase-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    transition: color .2s;
+  }
+  .phase-blurb {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 17px;
+    line-height: 1.4;
+    max-width: 42ch;
+    margin: 0;
+  }
+  .phase-body ol {
+    margin: 0; padding: 0; list-style: none;
+    counter-reset: step;
+  }
+  .phase-body li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    font-family: var(--serif);
+  }
+  .phase-body li:last-child { border-bottom: 0; }
+  .phase-body li::before {
+    counter-increment: step;
+    content: counter(step);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink);                 /* fixed: was --accent */
+    border: 1px solid var(--rule-strong);
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    margin-top: 2px;
+    transition: color .2s, border-color .2s, background .2s;
+  }
+
+  /* keyboard focus matches hover everywhere */
+  .phase:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
+  *:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phase, .phase * { transition: none !important; }
+  }
+
+  /* ════════════════════════════════════════════════════
+     V1 — CURRENT (broken). For reference.
+     ════════════════════════════════════════════════════ */
+  .v1 .phase-tag,
+  .v1 .phase-body li::before { color: var(--lavender); border-color: var(--lavender); }
+  .v1 .phase:hover { background: rgba(13, 10, 16, 0.04); }
+  .v1 .phase:hover .phase-title { color: var(--lavender); }
+
+  /* ════════════════════════════════════════════════════
+     V2 — UNDERLINE SHIFT (safest, smallest change)
+     Title keeps full ink contrast; an underline animates in.
+     ════════════════════════════════════════════════════ */
+  .v2 .phase:hover { background: rgba(13, 10, 16, 0.03); }
+  .v2 .phase-title {
+    background-image: linear-gradient(var(--ink), var(--ink));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1.5px;
+    transition: background-size .35s ease;
+    padding-bottom: 2px;
+  }
+  .v2 .phase:hover .phase-title,
+  .v2 .phase:focus-visible .phase-title { background-size: 100% 1.5px; }
+  .v2 .phase:hover .n { border-color: var(--ink); color: var(--ink); }
+
+  /* ════════════════════════════════════════════════════
+     V3 — INK LEFT BAR + PAPER FILL
+     Whole row gains a soft paper bg and a 3px ink bar slides in.
+     Title color never changes.
+     ════════════════════════════════════════════════════ */
+  .v3 .phase { padding-left: 28px; }
+  .v3 .phase::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--ink);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform .25s ease;
+  }
+  .v3 .phase:hover,
+  .v3 .phase:focus-visible { background: var(--paper); }
+  .v3 .phase:hover::before,
+  .v3 .phase:focus-visible::before { transform: scaleY(1); }
+  .v3 .phase:hover .n,
+  .v3 .phase:focus-visible .n {
+    background: var(--ink); color: var(--cream); border-color: var(--ink);
+  }
+
+  /* ════════════════════════════════════════════════════
+     V4 — DEEPENED ACCENT (keeps "purple" feeling, AA-compliant)
+     Title shifts to --accent-strong (~7.5:1 on cream).
+     Number circle inverts to ink fill.
+     ════════════════════════════════════════════════════ */
+  .v4 .phase-tag { color: var(--accent-strong); }
+  .v4 .phase-body li::before { color: var(--accent-strong); border-color: var(--accent-strong); }
+  .v4 .phase:hover { background: var(--accent-soft); }
+  .v4 .phase:hover .phase-title,
+  .v4 .phase:focus-visible .phase-title { color: var(--accent-strong); }
+  .v4 .phase:hover .n,
+  .v4 .phase:focus-visible .n {
+    background: var(--accent-strong); color: var(--cream); border-color: var(--accent-strong);
+  }
+  .v4 .phase:hover .phase-body li::before,
+  .v4 .phase:focus-visible .phase-body li::before {
+    background: var(--accent-strong); color: var(--cream); border-color: var(--accent-strong);
+  }
+
+  /* ════════════════════════════════════════════════════
+     V5 — INVERT BLOCK
+     Dramatic: full row flips to plum/cream on hover.
+     Highest contrast; strongest visual change.
+     ════════════════════════════════════════════════════ */
+  .v5 .phase:hover,
+  .v5 .phase:focus-visible {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .v5 .phase:hover .phase-title,
+  .v5 .phase:hover .phase-tag,
+  .v5 .phase:hover .phase-blurb,
+  .v5 .phase:hover .phase-body li { color: var(--cream); }
+  .v5 .phase:hover .phase-tag { color: var(--sun); }
+  .v5 .phase:hover .n {
+    background: var(--sun); color: var(--ink); border-color: var(--sun);
+  }
+  .v5 .phase:hover .phase-body li { border-bottom-color: rgba(245, 237, 224, 0.18); }
+  .v5 .phase:hover .phase-body li::before { color: var(--sun); border-color: var(--sun); }
+
+  /* ════════════════════════════════════════════════════
+     V6 — INDENT + CHEVRON (tactile, lightest possible)
+     Whole row slides right 6px; a chevron appears at the left.
+     No color shifts at all. Pure motion + glyph.
+     ════════════════════════════════════════════════════ */
+  .v6 .phase { padding-left: 36px; }
+  .v6 .phase::before {
+    content: "→";
+    position: absolute;
+    left: 8px; top: 32px;
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--ink);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity .2s, transform .25s ease;
+  }
+  .v6 .phase:hover,
+  .v6 .phase:focus-visible {
+    background: rgba(13, 10, 16, 0.03);
+    transform: translateX(4px);
+  }
+  .v6 .phase:hover::before,
+  .v6 .phase:focus-visible::before { opacity: 1; transform: translateX(0); }
+
+  /* ── closing notes ─────────────────────────────────── */
+  .summary {
+    margin-top: 80px;
+    padding: 32px;
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+  }
+  .summary h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    margin: 0 0 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .summary ul {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    padding-left: 22px;
+    margin: 0;
+  }
+  .summary li { margin-bottom: 8px; }
+  .summary code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px;
+    background: rgba(13,10,16,0.06);
+    padding: 1px 6px; border-radius: 3px;
+  }
+
+  /* responsive: collapse phase to 2-col on narrow screens (matches your @media) */
+  @media (max-width: 900px) {
+    .phase { grid-template-columns: 60px 1fr; gap: 18px; }
+    .phase-body { grid-column: 1 / -1; }
+    .variant-head { grid-template-columns: 40px 1fr; }
+    .variant-badges { grid-column: 2; }
+    .variant-notes { grid-template-columns: 1fr; }
+    .diag { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- INTRO ─────────────────────────────────────────────── -->
+  <section class="intro">
+    <div class="eyebrow">Accessibility study · roadmap.html</div>
+    <h1>The hover state is making your roadmap unreadable for some users.</h1>
+    <p class="lede">
+      On <em>cream</em> backgrounds, the lavender accent measures roughly <span class="ratio fail">1.4 : 1</span>
+      against the page — well below the <span class="ratio pass">4.5 : 1</span> WCAG AA minimum for body text and
+      <span class="ratio pass">3 : 1</span> for large text. On hover, the phase title <em>shifts toward that lavender</em>,
+      so the action actively reduces legibility. Below: five replacements, ordered from minimal to bold.
+    </p>
+
+    <div class="diag">
+      <div class="diag-card">
+        <h4>Where it fails</h4>
+        <p>
+          <code>.phase:hover .phase-title</code> &rarr; <code>color: var(--accent)</code>
+          (#c4b1dd on #f1e8d7). Also <code>.phase-tag</code>, <code>li::before</code> numbered chips,
+          <code>.deliverable</code> left border + label.
+        </p>
+      </div>
+      <div class="diag-card">
+        <h4>Where it&rsquo;s fine</h4>
+        <p>
+          Lavender on <code>--plum</code> (dark block) measures ~10 : 1 &mdash; that section is good.
+          So the fix is not to abandon lavender; it&rsquo;s to swap it for a deeper sibling on light backgrounds.
+        </p>
+      </div>
+    </div>
+
+    <p class="hint">Hover (or tab into) each row to compare</p>
+  </section>
+
+
+  <!-- V1 — current ──────────────────────────────────────── -->
+  <section class="variant v1">
+    <header class="variant-head">
+      <div class="variant-num">01</div>
+      <div>
+        <h2 class="variant-title">Current — for reference</h2>
+        <p class="variant-sub">What the live site does today. Hover the row and watch the title vanish into the page.</p>
+      </div>
+      <div class="variant-badges">
+        <span class="badge bad">Fails AA</span>
+        <span class="badge">Baseline</span>
+      </div>
+    </header>
+
+    <div class="phase" tabindex="0">
+      <div class="n">04</div>
+      <div>
+        <span class="phase-tag">Operational</span>
+        <h4 class="phase-title">DSARs — Data Subject Access Requests</h4>
+        <p class="phase-blurb">One of the most common day-to-day tasks. Missing deadlines, over-redacting,
+        under-disclosing — all create ICO risk.</p>
+      </div>
+      <div class="phase-body">
+        <ol>
+          <li>End-to-end DSAR process: receipt → ID verification → response within one month.</li>
+          <li>Exemptions: legal privilege, third-party data, management forecasts.</li>
+          <li>Manifestly unfounded or excessive — when you can refuse or charge.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="variant-notes">
+      <div><b>Hover contrast</b>Title goes lavender on cream &rarr; <span class="ratio fail">~1.4 : 1</span></div>
+      <div><b>Non-colour signal</b>None — colour-only state change</div>
+      <div><b>Keyboard focus</b>No matching focus style</div>
+    </div>
+  </section>
+
+
+  <!-- V2 — underline ────────────────────────────────────── -->
+  <section class="variant v2">
+    <header class="variant-head">
+      <div class="variant-num">02</div>
+      <div>
+        <h2 class="variant-title">Animated underline</h2>
+        <p class="variant-sub">Smallest possible change. Title stays full ink; a 1.5px underline scales in from the left.
+        Colour never moves, so contrast is unaffected.</p>
+      </div>
+      <div class="variant-badges">
+        <span class="badge good">AA</span>
+        <span class="badge good">AAA</span>
+      </div>
+    </header>
+
+    <div class="phase" tabindex="0">
+      <div class="n">04</div>
+      <div>
+        <span class="phase-tag">Operational</span>
+        <h4 class="phase-title">DSARs — Data Subject Access Requests</h4>
+        <p class="phase-blurb">One of the most common day-to-day tasks. Missing deadlines, over-redacting,
+        under-disclosing — all create ICO risk.</p>
+      </div>
+      <div class="phase-body">
+        <ol>
+          <li>End-to-end DSAR process: receipt → ID verification → response within one month.</li>
+          <li>Exemptions: legal privilege, third-party data, management forecasts.</li>
+          <li>Manifestly unfounded or excessive — when you can refuse or charge.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="variant-notes">
+      <div><b>Hover contrast</b>Title stays ink &rarr; <span class="ratio pass">17 : 1</span></div>
+      <div><b>Non-colour signal</b>Underline grows from 0 &rarr; 100%</div>
+      <div><b>Keyboard focus</b>Same underline + ring</div>
+    </div>
+  </section>
+
+
+  <!-- V3 — ink bar + fill ──────────────────────────────── -->
+  <section class="variant v3">
+    <header class="variant-head">
+      <div class="variant-num">03</div>
+      <div>
+        <h2 class="variant-title">Ink left bar + paper fill</h2>
+        <p class="variant-sub">More commitment. Row picks up the warmer <code>--paper</code> tone and a 3px ink bar
+        slides down the left edge. The phase number flips to a filled chip.</p>
+      </div>
+      <div class="variant-badges">
+        <span class="badge good">AA</span>
+        <span class="badge good">AAA</span>
+      </div>
+    </header>
+
+    <div class="phase" tabindex="0">
+      <div class="n">04</div>
+      <div>
+        <span class="phase-tag">Operational</span>
+        <h4 class="phase-title">DSARs — Data Subject Access Requests</h4>
+        <p class="phase-blurb">One of the most common day-to-day tasks. Missing deadlines, over-redacting,
+        under-disclosing — all create ICO risk.</p>
+      </div>
+      <div class="phase-body">
+        <ol>
+          <li>End-to-end DSAR process: receipt → ID verification → response within one month.</li>
+          <li>Exemptions: legal privilege, third-party data, management forecasts.</li>
+          <li>Manifestly unfounded or excessive — when you can refuse or charge.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="variant-notes">
+      <div><b>Hover contrast</b>All text stays ink on paper &rarr; <span class="ratio pass">16 : 1</span></div>
+      <div><b>Non-colour signal</b>Bar + bg fill + number flip — three cues</div>
+      <div><b>Keyboard focus</b>Identical to hover</div>
+    </div>
+  </section>
+
+
+  <!-- V4 — deepened accent ─────────────────────────────── -->
+  <section class="variant v4">
+    <header class="variant-head">
+      <div class="variant-num">04</div>
+      <div>
+        <h2 class="variant-title">Deepened accent — keep the purple feeling</h2>
+        <p class="variant-sub">Introduces <code>--accent-strong</code> at <code>#4a2d7a</code> — same hue family as
+        lavender, but ~7.5 : 1 on cream. Lavender stays for fills (still beautiful as <code>--accent-soft</code>);
+        the deeper tone does the work where contrast matters.</p>
+      </div>
+      <div class="variant-badges">
+        <span class="badge good">AA</span>
+        <span class="badge good">AAA</span>
+      </div>
+    </header>
+
+    <div class="phase" tabindex="0">
+      <div class="n">04</div>
+      <div>
+        <span class="phase-tag">Operational</span>
+        <h4 class="phase-title">DSARs — Data Subject Access Requests</h4>
+        <p class="phase-blurb">One of the most common day-to-day tasks. Missing deadlines, over-redacting,
+        under-disclosing — all create ICO risk.</p>
+      </div>
+      <div class="phase-body">
+        <ol>
+          <li>End-to-end DSAR process: receipt → ID verification → response within one month.</li>
+          <li>Exemptions: legal privilege, third-party data, management forecasts.</li>
+          <li>Manifestly unfounded or excessive — when you can refuse or charge.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="variant-notes">
+      <div><b>Hover contrast</b>Title &rarr; deep purple <span class="ratio pass">7.5 : 1</span> on soft lavender fill</div>
+      <div><b>Non-colour signal</b>Soft tint fill + number circle inverts</div>
+      <div><b>Keyboard focus</b>Identical to hover</div>
+    </div>
+  </section>
+
+
+  <!-- V5 — invert ───────────────────────────────────────── -->
+  <section class="variant v5">
+    <header class="variant-head">
+      <div class="variant-num">05</div>
+      <div>
+        <h2 class="variant-title">Invert block — editorial drama</h2>
+        <p class="variant-sub">Row flips to plum with cream text. Phase number becomes a sun-yellow chip.
+        Maximum contrast, strongest visual rhythm — but a big move; consider if every row should do this.</p>
+      </div>
+      <div class="variant-badges">
+        <span class="badge good">AAA</span>
+        <span class="badge">Bold</span>
+      </div>
+    </header>
+
+    <div class="phase" tabindex="0">
+      <div class="n">04</div>
+      <div>
+        <span class="phase-tag">Operational</span>
+        <h4 class="phase-title">DSARs — Data Subject Access Requests</h4>
+        <p class="phase-blurb">One of the most common day-to-day tasks. Missing deadlines, over-redacting,
+        under-disclosing — all create ICO risk.</p>
+      </div>
+      <div class="phase-body">
+        <ol>
+          <li>End-to-end DSAR process: receipt → ID verification → response within one month.</li>
+          <li>Exemptions: legal privilege, third-party data, management forecasts.</li>
+          <li>Manifestly unfounded or excessive — when you can refuse or charge.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="variant-notes">
+      <div><b>Hover contrast</b>Cream on plum &rarr; <span class="ratio pass">17 : 1</span></div>
+      <div><b>Non-colour signal</b>Full bg invert; obvious at any vision level</div>
+      <div><b>Keyboard focus</b>Identical to hover</div>
+    </div>
+  </section>
+
+
+  <!-- V6 — indent + chevron ─────────────────────────────── -->
+  <section class="variant v6">
+    <header class="variant-head">
+      <div class="variant-num">06</div>
+      <div>
+        <h2 class="variant-title">Chevron + indent — pure motion</h2>
+        <p class="variant-sub">No colour shift anywhere. Row slides 4px right, a mono <code>→</code> fades in at the
+        left. Lightest touch; relies entirely on movement, so it auto-disables under <code>prefers-reduced-motion</code>.</p>
+      </div>
+      <div class="variant-badges">
+        <span class="badge good">AAA</span>
+        <span class="badge">Subtle</span>
+      </div>
+    </header>
+
+    <div class="phase" tabindex="0">
+      <div class="n">04</div>
+      <div>
+        <span class="phase-tag">Operational</span>
+        <h4 class="phase-title">DSARs — Data Subject Access Requests</h4>
+        <p class="phase-blurb">One of the most common day-to-day tasks. Missing deadlines, over-redacting,
+        under-disclosing — all create ICO risk.</p>
+      </div>
+      <div class="phase-body">
+        <ol>
+          <li>End-to-end DSAR process: receipt → ID verification → response within one month.</li>
+          <li>Exemptions: legal privilege, third-party data, management forecasts.</li>
+          <li>Manifestly unfounded or excessive — when you can refuse or charge.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="variant-notes">
+      <div><b>Hover contrast</b>Unchanged &rarr; <span class="ratio pass">17 : 1</span></div>
+      <div><b>Non-colour signal</b>Indent + glyph; motion only</div>
+      <div><b>Keyboard focus</b>Identical to hover</div>
+    </div>
+  </section>
+
+
+  <!-- SUMMARY ───────────────────────────────────────────── -->
+  <section class="summary">
+    <h2>What I'd actually change in your CSS</h2>
+    <ul>
+      <li>Add a deeper sibling token: <code>--accent-strong: #4a2d7a;</code> in <code>:root</code>. Keep <code>--accent</code> (lavender) for use on dark backgrounds and as a fill tint.</li>
+      <li>On cream sections, replace <code>color: var(--accent)</code> with <code>color: var(--accent-strong)</code> for: <code>.phase-tag</code>, <code>.phase-body li::before</code>, <code>.deliverable b</code>, <code>.deliverable</code> left border, <code>.cert .status</code>, <code>.section-head .num</code>.</li>
+      <li>Replace <code>.phase:hover .phase-title { color: var(--accent) }</code> with one of the patterns above. My pick: <strong>variant 03 (ink bar + paper fill)</strong> for the cream tracks, and the existing lavender hover stays on the plum track (it already works there).</li>
+      <li>Add <code>.phase:focus-visible</code> mirroring whatever hover does — keyboard parity.</li>
+      <li>Wrap transitions in <code>@media (prefers-reduced-motion: no-preference)</code> so v6-style motion is opt-out.</li>
+      <li>Optional: make the whole <code>.phase</code> a <code>&lt;button&gt;</code> or anchor so it&rsquo;s reachable in the tab order — right now nothing on the roadmap is keyboard-focusable.</li>
+    </ul>
+  </section>
+
+</div>
+</body>
+</html>
