@@ -2898,6 +2898,70 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
    ║  CAREER                                                        ║
    ╚════════════════════════════════════════════════════════════════╝ */
 
+/* ── Area selector ─────────────────────────────────────────────── */
+.career-area-selector {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  padding: 20px 0 0;
+  margin-bottom: 0;
+}
+.career-area-selector .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+.cas-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.cas-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cas-tabs::-webkit-scrollbar { display: none; }
+.cas-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 20px 14px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.cas-tab:hover { color: var(--ink); }
+.cas-tab.is-active { color: var(--ink); border-bottom-color: var(--accent); }
+.cas-glyph { font-size: 15px; opacity: 0.7; }
+.cas-tab.is-active .cas-glyph { opacity: 1; }
+@media (max-width: 600px) {
+  .cas-tab { padding: 10px 14px 12px; font-size: 12px; gap: 5px; }
+}
+
+/* ── Area intro strip ───────────────────────────────────────────── */
+.career-area-intro {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 8px;
+}
+.career-area-intro p {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+}
+
 .career { padding: 8px 0 80px; background: var(--cream); }
 .career-wrap {
   display: grid;

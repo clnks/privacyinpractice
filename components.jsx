@@ -48,11 +48,14 @@ const NAV_LINKS = [
 { id: "about", label: "About", href: "./about.html" }];
 
 const TOOLS_ITEMS = [
-  { id: "study",       href: "./study.html",       label: "Study cards",    kicker: "Flashcards, spaced rep, quiz",   glyph: "✦" },
-  { id: "calculators", href: "./calculators.html", label: "Calculators",    kicker: "DSAR, breach, DPIA tools",       glyph: "∑" },
-  { id: "glossary",    href: "./glossary.html",    label: "Glossary",       kicker: "Every term defined",             glyph: "Aa" },
-  { id: "artefacts",   href: "./artefacts.html",   label: "Artefact library", kicker: "Templates &amp; worked examples", glyph: "✎" },
-  { id: "reading",     href: "./reading.html",     label: "Reading list",   kicker: "Interactive bookcase",            glyph: "♦" },
+  { id: "study",       href: "./study.html",       label: "Study cards",      kicker: "Flashcards, spaced rep",               glyph: "✦" },
+  { id: "quiz",        href: "./quiz.html",         label: "Knowledge quiz",   kicker: "10 questions · instant feedback",      glyph: "?" },
+  { id: "decisions",   href: "./decisions.html",    label: "Decision trees",   kicker: "DPIA · lawful basis · breach",         glyph: "◈" },
+  { id: "scenarios",   href: "./scenarios.html",    label: "Scenario practice", kicker: "Real situations · model answers",    glyph: "▶" },
+  { id: "calculators", href: "./calculators.html",  label: "Calculators",      kicker: "DSAR, breach, DPIA tools",             glyph: "∑" },
+  { id: "glossary",    href: "./glossary.html",     label: "Glossary",         kicker: "Every term defined",                   glyph: "Aa" },
+  { id: "artefacts",   href: "./artefacts.html",    label: "Artefact library", kicker: "Templates &amp; worked examples",      glyph: "✎" },
+  { id: "reading",     href: "./reading.html",      label: "Reading list",     kicker: "Interactive bookcase",                 glyph: "♦" },
 ];
 
 function AreasDropdown({ open, onClose, areaActive }) {
@@ -125,7 +128,7 @@ function Nav({ active, areaActive }) {
   }, []);
 
   const closeAll = () => { setOpenId(null); setMobileOpen(false); };
-  const TOOL_IDS = ["study","calculators","glossary","artefacts","reading"];
+  const TOOL_IDS = ["study","quiz","decisions","scenarios","calculators","glossary","artefacts","reading"];
 
   return (
     <nav className={"nav" + (mobileOpen ? " is-mobile-open" : "")} ref={navRef}>
@@ -444,7 +447,7 @@ function SectionHead({ num, eyebrow, title, sub, id, sparkle = true }) {
 }
 
 // ───────── ROADMAP ─────────
-function Phase({ p }) {
+function Phase({ p, done, onToggle }) {
   if (p.isCerts) {
     return (
       <div className="phase">
@@ -470,7 +473,7 @@ function Phase({ p }) {
 
   }
   return (
-    <div className="phase reveal">
+    <div className={"phase reveal" + (done ? " phase-done" : "")}>
       <div className="n">{p.n}</div>
       <div>
         <span className="phase-tag">{p.tag}</span>
@@ -487,13 +490,25 @@ function Phase({ p }) {
           <b>Deliverable</b>
           {p.deliverable}
         </div>
+        {onToggle && (
+          <button
+            className={"phase-done-btn" + (done ? " is-done" : "")}
+            onClick={() => onToggle(p.n)}
+            aria-pressed={done}
+          >
+            {done ? "✓ Completed" : "Mark complete"}
+          </button>
+        )}
       </div>
     </div>);
 
 }
 
-function Track({ t, idx }) {
+function Track({ t, idx, progress, onToggle }) {
   const blocks = ["", "track-block-blush", "track-block-plum", "track-block-sun"];
+  const regularPhases = t.phases.filter(p => !p.isCerts);
+  const doneCount = regularPhases.filter(p => progress && progress[p.n]).length;
+  const totalCount = regularPhases.length;
   return (
     <div className={"track reveal " + (blocks[idx] || "")}>
       <div className="track-head">
@@ -505,14 +520,37 @@ function Track({ t, idx }) {
         </div>
         <div className="track-glyph">{t.glyph}</div>
       </div>
+      {totalCount > 0 && (
+        <div className="track-progress-row">
+          <div className="tp-bar"><div className="tp-fill" style={{ width: (doneCount / totalCount * 100) + "%" }}></div></div>
+          <span className="tp-count">{doneCount}/{totalCount} phases</span>
+        </div>
+      )}
       <div className="phases">
-        {t.phases.map((p) => <Phase key={p.n} p={p} />)}
+        {t.phases.map((p) => <Phase key={p.n} p={p} done={!!(progress && progress[p.n])} onToggle={onToggle} />)}
       </div>
     </div>);
 
 }
 
 function Roadmap({ tracks }) {
+  const [progress, setProgress] = useState(() => {
+    try { const raw = localStorage.getItem("pip-progress"); return raw ? JSON.parse(raw) : {}; } catch { return {}; }
+  });
+
+  const togglePhase = (n) => {
+    setProgress(prev => {
+      const next = { ...prev, [n]: !prev[n] };
+      try { localStorage.setItem("pip-progress", JSON.stringify(next)); } catch {}
+      return next;
+    });
+  };
+
+  const allPhases = tracks.flatMap(t => t.phases.filter(p => !p.isCerts));
+  const totalPhases = allPhases.length;
+  const completedPhases = allPhases.filter(p => progress[p.n]).length;
+  const pct = totalPhases > 0 ? Math.round(completedPhases / totalPhases * 100) : 0;
+
   return (
     <>
       <SectionHead
@@ -521,10 +559,28 @@ function Roadmap({ tracks }) {
         eyebrow="The Complete Path"
         title="From zero to data protection professional"
         sub="Four tracks covering the foundations, operations, specialist knowledge, and the career tools you need. Built from real job requirements and active study — not from a textbook." />
-      
+
+      <div className="wrap roadmap-progress-wrap">
+        <div className="roadmap-progress">
+          <div className="rp-row">
+            <span className="rp-label">Your progress</span>
+            <span className="rp-right">
+              <span className="rp-count">{completedPhases} of {totalPhases} phases complete</span>
+              <span className="rp-pct">{pct}%</span>
+            </span>
+          </div>
+          <div className="rp-bar"><div className="rp-fill" style={{ width: pct + "%" }}></div></div>
+          {completedPhases > 0 && (
+            <button className="rp-reset" onClick={() => { setProgress({}); try { localStorage.removeItem("pip-progress"); } catch {} }}>
+              Reset progress
+            </button>
+          )}
+        </div>
+      </div>
+
       <section className="roadmap">
         <div className="wrap">
-          {tracks.map((t, i) => <Track key={t.num} t={t} idx={i} />)}
+          {tracks.map((t, i) => <Track key={t.num} t={t} idx={i} progress={progress} onToggle={togglePhase} />)}
         </div>
       </section>
     </>);
@@ -729,11 +785,13 @@ function Footer() {
           <div>
             <h5>Tools</h5>
             <ul>
+              <li><a href="./quiz.html">Knowledge quiz</a></li>
+              <li><a href="./decisions.html">Decision trees</a></li>
+              <li><a href="./scenarios.html">Scenario practice</a></li>
               <li><a href="./calculators.html">Calculators</a></li>
               <li><a href="./glossary.html">Glossary</a></li>
               <li><a href="./artefacts.html">Artefact library</a></li>
               <li><a href="./reading.html">Reading list</a></li>
-              <li><a href="./resources.html">Resources</a></li>
               <li><a href="#" onClick={(e) => { e.preventDefault(); window.openSearch && window.openSearch(); }}>Search ⌘K</a></li>
             </ul>
           </div>
@@ -855,6 +913,30 @@ const PAGE_SOURCES = {
     { title: "FCA: Open Banking", note: "fca.org.uk", url: "https://www.fca.org.uk/consumers/open-banking" },
     { title: "Data (Use & Access) Act 2025 — smart data provisions", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2025/14/contents" },
     { title: "FCA: Consumer Duty", note: "fca.org.uk", url: "https://www.fca.org.uk/firms/consumer-duty" },
+  ],
+  "quiz": [
+    { title: "UK GDPR — Article 6: Lawful bases for processing", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/6" },
+    { title: "UK GDPR — Article 9: Special category data", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/9" },
+    { title: "UK GDPR — Article 12: Timescales for responding", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/12" },
+    { title: "UK GDPR — Article 25: Privacy by Design", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/25" },
+    { title: "UK GDPR — Article 33–34: Breach notification", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/33" },
+    { title: "ICO: Guide to the UK GDPR", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" },
+  ],
+  "decisions": [
+    { title: "UK GDPR — Article 35: When is a DPIA required?", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/35" },
+    { title: "ICO: DPIAs — when are they required?", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" },
+    { title: "UK GDPR — Article 6: Lawful bases", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/6" },
+    { title: "ICO: Lawful basis interactive tool", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/lawful-basis-interactive-guidance-tool/" },
+    { title: "UK GDPR — Article 33: Breach notification to supervisory authority", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/33" },
+    { title: "ICO: Reporting a personal data breach", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/report-a-breach/" },
+  ],
+  "scenarios": [
+    { title: "UK GDPR — Article 12: Responding to data subject requests", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/12" },
+    { title: "UK GDPR — Article 28: Controller-processor contracts", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/28" },
+    { title: "UK GDPR — Articles 33–34: Breach notification", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/33" },
+    { title: "ICO: Direct marketing guidance", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/" },
+    { title: "Privacy and Electronic Communications Regulations 2003 (PECR)", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/uksi/2003/2426/contents" },
+    { title: "ICO: International transfers — UK IDTA", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/" },
   ],
 };
 
