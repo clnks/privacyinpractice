@@ -44,7 +44,6 @@ const NAV_LINKS = [
 { id: "areas", label: "Areas", href: null, dropdown: "areas" },
 { id: "tools", label: "Tools", href: null, dropdown: "tools" },
 { id: "career", label: "Career", href: "./career.html" },
-{ id: "articles", label: "Articles", href: "./articles.html" },
 { id: "resources", label: "Resources", href: "./resources.html" },
 { id: "about", label: "About", href: "./about.html" }];
 
@@ -725,11 +724,8 @@ function Footer() {
               <li><a href="./roadmap.html">Roadmap</a></li>
               <li><a href="./study.html">Study cards</a></li>
               <li><a href="./career.html">Career</a></li>
-              <li><a href="./articles.html">Articles</a></li>
             </ul>
-          </div>
-          <div>
-            <h5>Tools</h5>
+            <h5 style={{marginTop:"20px"}}>Tools</h5>
             <ul>
               <li><a href="./calculators.html">Calculators</a></li>
               <li><a href="./glossary.html">Glossary</a></li>
@@ -740,7 +736,35 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h5>About</h5>
+            <h5>Legislation</h5>
+            <ul>
+              <li><a href="https://www.legislation.gov.uk/eur/2016/679/contents" target="_blank" rel="noopener">UK GDPR ↗</a></li>
+              <li><a href="https://www.legislation.gov.uk/ukpga/2018/12/contents" target="_blank" rel="noopener">Data Protection Act 2018 ↗</a></li>
+              <li><a href="https://www.legislation.gov.uk/ukpga/2025/14/contents" target="_blank" rel="noopener">Data (Use &amp; Access) Act 2025 ↗</a></li>
+              <li><a href="https://www.legislation.gov.uk/ukpga/2000/36/contents" target="_blank" rel="noopener">Freedom of Information Act 2000 ↗</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Regulator &amp; Guidance</h5>
+            <ul>
+              <li><a href="https://ico.org.uk" target="_blank" rel="noopener">ICO ↗</a></li>
+              <li><a href="https://ico.org.uk/for-organisations/advice-for-small-organisations/make-your-own-privacy-notice/" target="_blank" rel="noopener">ICO — Privacy notices ↗</a></li>
+              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/" target="_blank" rel="noopener">ICO — DSARs ↗</a></li>
+              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" target="_blank" rel="noopener">ICO — DPIAs ↗</a></li>
+              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-and-governance/records-of-processing-activities/" target="_blank" rel="noopener">ICO — RoPA ↗</a></li>
+              <li><a href="https://ico.org.uk/action-weve-taken/enforcement/" target="_blank" rel="noopener">ICO — Enforcement ↗</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Standards &amp; Bodies</h5>
+            <ul>
+              <li><a href="https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF ↗</a></li>
+              <li><a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001 ↗</a></li>
+              <li><a href="https://iapp.org" target="_blank" rel="noopener">IAPP ↗</a></li>
+              <li><a href="https://www.bcs.org/qualifications-and-certifications/certifications-for-professionals/data-protection/" target="_blank" rel="noopener">BCS ↗</a></li>
+              <li><a href="https://www.gov.uk/government/organisations/information-commissioners-office" target="_blank" rel="noopener">ICO — gov.uk ↗</a></li>
+            </ul>
+            <h5 style={{marginTop:"20px"}}>About</h5>
             <ul>
               <li><a href="./about.html">About this site</a></li>
               <li><a href="./privacy.html">Privacy notice</a></li>
