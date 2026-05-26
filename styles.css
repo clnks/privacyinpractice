@@ -5739,13 +5739,25 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 .bk-cover-ocean    { background: var(--ocean, #b5c8d9); }
 .bk-cover-plum     { background: var(--plum); border-color: #000; }
 
+/* real cover image from coverUrl — fills frame, sits above fallback */
+.bk-cover-real {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 2;
+  display: block;
+}
+
 /* the image-slot occupies the full frame ON TOP of the typographic fallback */
 .bk-cover-slot {
   position: absolute !important;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* Typographic fallback shown UNDER the slot — visible when no image dropped */
