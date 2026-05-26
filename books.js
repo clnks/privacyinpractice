@@ -29,7 +29,7 @@ window.BOOKS = [
   },
   {
     id: "cavoukian-pbd",
-    location: "shelf",
+    location: "web",
     title: "Privacy by Design — The 7 Foundational Principles",
     spineLabel: "Privacy by Design · 7 Principles",
     author: "Ann Cavoukian",
@@ -40,7 +40,6 @@ window.BOOKS = [
     area: "dp",
     color: "lavender",
     h: 260, w: 50,
-    tilt: 5,
     featured: true,
     summary: "The original PbD paper. 13 pages. Every modern privacy framework — including GDPR's Article 25 — owes a direct intellectual debt to this document.",
     why: "Practical, short, and quotable. You'll cite it in your DPIAs, your policies, and your interviews. Free.",
@@ -142,7 +141,7 @@ window.BOOKS = [
   },
   {
     id: "nist-ai-rmf",
-    location: "shelf",
+    location: "web",
     title: "NIST AI Risk Management Framework",
     spineLabel: "NIST AI Risk Management Framework",
     author: "NIST",
@@ -267,7 +266,7 @@ window.BOOKS = [
   },
   {
     id: "iso-27001",
-    location: "shelf",
+    location: "web",
     title: "ISO/IEC 27001:2022",
     spineLabel: "ISO/IEC 27001:2022",
     author: "ISO",
@@ -357,7 +356,7 @@ window.BOOKS = [
   /* ─── AML / Financial Crime ─────────────────────────────────── */
   {
     id: "fatf-mer",
-    location: "shelf",
+    location: "web",
     title: "UK Mutual Evaluation Report",
     spineLabel: "FATF UK Mutual Evaluation",
     author: "Financial Action Task Force",
@@ -368,7 +367,6 @@ window.BOOKS = [
     area: "aml",
     color: "ocean",
     h: 330, w: 66,
-    tilt: 4,
     featured: true,
     summary: "FATF's evaluation of the UK's AML/CTF/CPF regime. Lengthy, technical, and the single most-cited document in UK AML policy work.",
     why: "Every MLRO should have read at least the executive summary. Sets the framework against which UK enforcement is measured.",
@@ -377,7 +375,7 @@ window.BOOKS = [
   {
     id: "browder-red-notice",
     location: "shelf",
-    coverUrl: "https://covers.openlibrary.org/b/isbn/9780552170321-L.jpg",
+    coverUrl: "https://covers.openlibrary.org/b/isbn/9781476755892-L.jpg",
     title: "Red Notice",
     spineLabel: "Red Notice",
     author: "Bill Browder",

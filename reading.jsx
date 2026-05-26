@@ -49,34 +49,33 @@ function BookCover({ book, size = "lg" }) {
   return (
     <div className={"bk-cover-wrap-i " + sizeClass}>
       <div className={"bk-cover-frame bk-cover-" + book.color}>
-        {/* Real cover image — sits above fallback, below image-slot drop zone */}
-        {book.coverUrl && (
-          <img
-            src={book.coverUrl}
-            alt={book.title + " cover"}
-            className="bk-cover-real"
-          />
-        )}
-        <image-slot
-          id={"cover-" + book.id}
-          shape="rect"
-          fit="cover"
-          placeholder="Drop cover image"
-          class="bk-cover-slot"
-        ></image-slot>
-        {/* Typographic fallback — only visible when no coverUrl and no dropped image */}
-        {!book.coverUrl && (
-          <div className="bk-cover-fallback" aria-hidden="true">
-            <span className="bk-cover-type">{book.type}</span>
-            <span className="bk-cover-title">{book.title}</span>
-            <span className="bk-cover-author">{book.author}</span>
-            <span className="bk-cover-meta">
-              <span>{book.year}</span>
-              <span className="bk-cover-dot">·</span>
-              <span>{book.format}</span>
-            </span>
-          </div>
-        )}
+        {/* Typographic fallback — always rendered at z-index 1; hidden visually by image above it */}
+        <div className="bk-cover-fallback" aria-hidden="true">
+          <span className="bk-cover-type">{book.type}</span>
+          <span className="bk-cover-title">{book.title}</span>
+          <span className="bk-cover-author">{book.author}</span>
+          <span className="bk-cover-meta">
+            <span>{book.year}</span>
+            <span className="bk-cover-dot">·</span>
+            <span>{book.format}</span>
+          </span>
+        </div>
+        {/* Real cover image — shown when coverUrl exists; onError falls back to text behind it */}
+        {book.coverUrl
+          ? <img
+              src={book.coverUrl}
+              alt={book.title + " cover"}
+              className="bk-cover-real"
+              onError={e => { e.currentTarget.style.display = "none"; }}
+            />
+          : <image-slot
+              id={"cover-" + book.id}
+              shape="rect"
+              fit="cover"
+              placeholder="Drop cover image"
+              class="bk-cover-slot"
+            ></image-slot>
+        }
         <div className="bk-cover-spine-edge" aria-hidden="true"></div>
       </div>
     </div>
