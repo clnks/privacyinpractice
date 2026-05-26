@@ -1912,14 +1912,14 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 
 /* headline on dark */
 .hero h1 { color: var(--paper); }
-.hero h1 .b { color: var(--accent); font-style: italic; }
+.hero h1 .b { color: var(--sun); font-style: italic; }
 .hero h1 .b::before { display: none; }
-.hero h1 .b::after { background: var(--accent); }
+.hero h1 .b::after { background: var(--sun); }
 
 /* eyebrow on dark */
 .hero-eyebrow { color: rgba(245,242,238,0.42); }
 .hero-eyebrow .ln { background: rgba(245,242,238,0.2); }
-.hero-eyebrow .sparkle { color: var(--accent); }
+.hero-eyebrow .sparkle { color: var(--sun); }
 
 /* lede on dark */
 .hero .lede {
@@ -1937,7 +1937,7 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
   color: var(--paper);
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--sun);
   text-underline-offset: 3px;
 }
 
@@ -1960,8 +1960,8 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
   padding: 16px 28px;
 }
 .hero .sticker-cta:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--sun);
+  border-color: var(--sun);
   color: var(--ink);
   transform: none;
   box-shadow: none;
@@ -1972,7 +1972,7 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 }
 .hero .sticker-cta:hover .arr {
   background: var(--ink);
-  color: var(--accent);
+  color: var(--sun);
   transform: rotate(-45deg);
 }
 
@@ -2026,9 +2026,9 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
   letter-spacing: 0.04em;
   border-radius: 3px;
 }
-.nav-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.nav-cta:hover { background: var(--sun); border-color: var(--sun); color: var(--ink); }
 .brand .mark { font-family: var(--display); font-weight: 800; font-style: normal; }
-.brand .dot { background: var(--accent); }
+.brand .dot { background: var(--sun); }
 
 /* SIFONN PRO for section heads but allow squiggle to read */
 .section-head { padding-top: 80px; padding-bottom: 32px; }

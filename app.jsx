@@ -25,11 +25,11 @@ const FONT_PAIRINGS = {
 
 const PALETTES = {
   "Refined": {
-    cream: "#f4f1ec", paper: "#faf8f5",
-    lavender: "#b8956a", lavender2: "#a07d52",
-    plum: "#111110",
-    sun: "#b8956a", coral: "#9a8474",
-    blush: "#ede8df", mint: "#d8d3cc",
+    cream: "#f2f2ee", paper: "#fafaf8",
+    lavender: "#4a7c14", lavender2: "#3a6210",
+    plum: "#141414",
+    sun: "#a4d62c", coral: "#928c84",
+    blush: "#e4e4e0", mint: "#c4b8dc",
   },
   "Lavender & Butter": {
     cream: "#f1e8d7", paper: "#f9f1e1",
