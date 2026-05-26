@@ -183,6 +183,9 @@ function App() {
       {PAGE === "career"   && <Career />}
       {PAGE === "area"          && <Area />}
       {PAGE === "areas-landing" && window.AreasLandingPage && <window.AreasLandingPage />}
+      {PAGE === "quiz"        && window.QuizPage        && <window.QuizPage />}
+      {PAGE === "decisions"   && window.DecisionsPage   && <window.DecisionsPage />}
+      {PAGE === "scenarios"   && window.ScenariosPage   && <window.ScenariosPage />}
       {PAGE === "artefacts"   && window.ArtefactsPage   && <window.ArtefactsPage />}
       {PAGE === "glossary"    && window.GlossaryPage    && <window.GlossaryPage />}
       {PAGE === "calculators" && window.CalculatorsPage && <window.CalculatorsPage />}
