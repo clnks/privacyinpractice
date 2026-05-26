@@ -17,7 +17,7 @@ function Spine({ book, isActive, onClick, idx }) {
     <button
       ref={ref}
       className={"bk-spine bk-spine-" + book.color + (isActive ? " is-active" : "")}
-      style={{ height: book.h + "px", width: book.w + "px" }}
+      style={{ height: book.h + "px", width: isActive ? "160px" : book.w + "px", "--tilt": (book.tilt || 0) + "deg" }}
       onClick={onClick}
       aria-label={book.title + " by " + book.author + " — pick up to read more"}
       aria-pressed={isActive}
@@ -29,6 +29,16 @@ function Spine({ book, isActive, onClick, idx }) {
         <span className="bk-spine-title">{book.spineLabel || book.title}</span>
       </span>
       <span className="bk-spine-author">{book.authorShort || book.author}</span>
+      {/* ── Cover reveal ── */}
+      <span className="bk-spine-cover" aria-hidden="true">
+        {book.coverUrl
+          ? <img className="bk-spine-cover-img" src={book.coverUrl} alt="" />
+          : <span className="bk-spine-cover-fb">
+              <span className="bk-spine-cover-fb-title">{book.title}</span>
+              <span className="bk-spine-cover-fb-author">{book.authorShort || book.author}</span>
+            </span>
+        }
+      </span>
     </button>
   );
 }

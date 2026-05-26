@@ -3,8 +3,8 @@ const { useState, useEffect: useEff } = React;
 
 // === Curated typography options ===
 const FONT_PAIRINGS = {
-  "Chunky · Bricolage": {
-    display: '"Bricolage Grotesque", sans-serif',
+  "Chunky · SIFONN": {
+    display: '"SIFONN PRO", sans-serif',
     serif: '"Instrument Serif", Georgia, serif',
     sans: '"Bricolage Grotesque", sans-serif',
     mono: '"Bricolage Grotesque", sans-serif',
@@ -49,7 +49,7 @@ const PALETTES = {
 
 function applyTokens({ palette, pairing }) {
   const p = PALETTES[palette] || PALETTES["Lavender & Butter"];
-  const f = FONT_PAIRINGS[pairing] || FONT_PAIRINGS["Chunky · Bricolage"];
+  const f = FONT_PAIRINGS[pairing] || FONT_PAIRINGS["Chunky · SIFONN"];
   const r = document.documentElement.style;
   r.setProperty("--cream", p.cream);
   r.setProperty("--paper", p.paper);
@@ -90,7 +90,7 @@ function applyTokens({ palette, pairing }) {
 
 const DEFAULTS = /*EDITMODE-BEGIN*/{
   "palette": "Lavender & Butter",
-  "pairing": "Chunky · Bricolage",
+  "pairing": "Chunky · SIFONN",
   "showRibbon": true,
   "showMission": true,
   "heroItalicColor": "#f9f1e1",

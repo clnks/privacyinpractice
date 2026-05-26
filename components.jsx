@@ -779,7 +779,7 @@ function Footer() {
         </div>
         <div className="foot-bottom">
           <span>© Clarissa Ankrah, 2026 · Privacy in Practice</span>
-          <span>Set in Bricolage Grotesque &amp; Lora · Free, always</span>
+          <span>Set in SIFONN PRO, Bricolage Grotesque &amp; Lora · Free, always</span>
           <span>UK · London</span>
         </div>
       </div>

@@ -1,5 +1,13 @@
 /* === Privacy in Practice — editorial redesign === */
 
+@font-face {
+  font-family: "SIFONN PRO";
+  src: url("fonts/SIFONN_PRO.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* === Cohesive palette — lavender / cream / black / butter === */
   --cream: #f1e8d7;
@@ -27,7 +35,7 @@
   --accent-soft:   #ece2f5;
   --highlight: rgba(196, 177, 221, 0.20);
 
-  --display: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  --display: "SIFONN PRO", -apple-system, BlinkMacSystemFont, sans-serif;
   --serif: "Lora", "Cormorant Garamond", Georgia, serif;
   --sans: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -1900,7 +1908,7 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 .brand .mark { font-family: var(--display); font-weight: 800; font-style: normal; }
 .brand .dot { background: var(--sun); }
 
-/* Bricolage for section heads but allow squiggle to read */
+/* SIFONN PRO for section heads but allow squiggle to read */
 .section-head { padding-top: 80px; padding-bottom: 32px; }
 .section-head .num {
   font-family: var(--display);
@@ -5925,7 +5933,9 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-  transition: transform .25s cubic-bezier(.22,.61,.36,1), box-shadow .25s ease;
+  transform-origin: bottom center;
+  transform: rotate(var(--tilt, 0deg));
+  transition: width .38s cubic-bezier(.22,.61,.36,1), transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .25s ease;
   box-shadow:
     inset 1px 0 0 rgba(255,255,255,0.18),
     inset -1px 0 0 rgba(13,10,16,0.18),
@@ -5939,9 +5949,9 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
     inset -1px 0 0 rgba(13,10,16,0.18),
     0 0 0 3px var(--accent-strong);
 }
-.bk-spine:hover { transform: translateY(-12px); z-index: 2; }
+.bk-spine:hover { transform: rotate(0deg) translateY(-12px); z-index: 2; }
 .bk-spine.is-active {
-  transform: translateY(-28px);
+  transform: rotate(0deg) translateY(-28px);
   z-index: 5;
   box-shadow:
     inset 1px 0 0 rgba(255,255,255,0.25),
@@ -5955,7 +5965,59 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
   height: 4px;
   background: var(--sun);
   border-bottom: 1px solid var(--ink);
+  z-index: 2;
 }
+
+/* ── Cover reveal inside the spine ─────────────────────────── */
+.bk-spine-cover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s ease .18s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.bk-spine-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.bk-spine-cover-fb {
+  position: absolute;
+  inset: 0;
+  padding: 16px 12px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  writing-mode: horizontal-tb;
+}
+.bk-spine-cover-fb-title {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.bk-spine-cover-fb-author {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+/* show cover, hide spine text when active */
+.bk-spine.is-active .bk-spine-cover       { opacity: 1; pointer-events: auto; }
+.bk-spine.is-active .bk-spine-text        { opacity: 0; transition: opacity .12s ease; }
+.bk-spine.is-active .bk-spine-author      { opacity: 0; transition: opacity .12s ease; }
+.bk-spine.is-active .bk-band              { opacity: 0; transition: opacity .12s ease; }
 
 .bk-spine-lavender { background: linear-gradient(95deg, var(--lavender-2, #b39fd0) 0%, var(--lavender) 18%, var(--lavender) 82%, var(--lavender-2, #b39fd0) 100%); color: var(--ink); }
 .bk-spine-blush    { background: linear-gradient(95deg, color-mix(in oklab, var(--blush) 75%, var(--ink)) 0%, var(--blush) 18%, var(--blush) 82%, color-mix(in oklab, var(--blush) 75%, var(--ink)) 100%); color: var(--ink); }
