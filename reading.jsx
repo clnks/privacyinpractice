@@ -8,11 +8,16 @@ const { useState: useBkS, useEffect: useBkE, useMemo: useBkM, useRef: useBkR } =
 /* ─── A single book spine on the shelf ────────────────────────── */
 function Spine({ book, isActive, onClick, idx }) {
   const ref = useBkR(null);
+  const [imgFailed, setImgFailed] = useBkS(false);
+
   useBkE(() => {
     if (isActive && ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
     }
   }, [isActive]);
+
+  const showCoverImg = book.coverUrl && !imgFailed;
+
   return (
     <button
       ref={ref}
@@ -31,8 +36,13 @@ function Spine({ book, isActive, onClick, idx }) {
       <span className="bk-spine-author">{book.authorShort || book.author}</span>
       {/* ── Cover reveal ── */}
       <span className="bk-spine-cover" aria-hidden="true">
-        {book.coverUrl
-          ? <img className="bk-spine-cover-img" src={book.coverUrl} alt="" />
+        {showCoverImg
+          ? <img
+              className="bk-spine-cover-img"
+              src={book.coverUrl}
+              alt=""
+              onError={() => setImgFailed(true)}
+            />
           : <span className="bk-spine-cover-fb">
               <span className="bk-spine-cover-fb-title">{book.title}</span>
               <span className="bk-spine-cover-fb-author">{book.authorShort || book.author}</span>

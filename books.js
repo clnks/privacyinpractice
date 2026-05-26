@@ -105,7 +105,7 @@ window.BOOKS = [
   {
     id: "ai-snake-oil",
     location: "shelf",
-    coverUrl: "https://covers.openlibrary.org/b/isbn/9780691249131-L.jpg",
+    coverUrl: "https://books.google.com/books/content?vid=ISBN:9780691249131&printsec=frontcover&img=1&zoom=3",
     title: "AI Snake Oil",
     spineLabel: "AI Snake Oil",
     author: "Arvind Narayanan & Sayash Kapoor",
