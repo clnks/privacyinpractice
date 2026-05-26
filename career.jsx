@@ -1,4 +1,5 @@
 /* === Privacy in Practice — Career hub (discipline-filtered) === */
+const { useState: useS, useEffect: useE } = React;
 
 const CAREER_AREAS_META = [
   { id: "dp",      label: "Data Protection",      glyph: "§"  },
