@@ -24,6 +24,13 @@ const FONT_PAIRINGS = {
 };
 
 const PALETTES = {
+  "Refined": {
+    cream: "#f4f1ec", paper: "#faf8f5",
+    lavender: "#b8956a", lavender2: "#a07d52",
+    plum: "#111110",
+    sun: "#b8956a", coral: "#9a8474",
+    blush: "#ede8df", mint: "#d8d3cc",
+  },
   "Lavender & Butter": {
     cream: "#f1e8d7", paper: "#f9f1e1",
     lavender: "#c4b1dd", lavender2: "#b39fd0",
@@ -37,13 +44,6 @@ const PALETTES = {
     plum: "#1a1a18",
     sun: "#e8d050", coral: "#c89580",
     blush: "#e8d8c4", mint: "#c5d4b8",
-  },
-  "Rose & Latte": {
-    cream: "#f4ebde", paper: "#faf3e7",
-    lavender: "#e8c4c4", lavender2: "#d8a8a8",
-    plum: "#1f1518",
-    sun: "#f4d870", coral: "#cc8a78",
-    blush: "#e8d0c0", mint: "#d8d4c0",
   },
 };
 
@@ -89,7 +89,7 @@ function applyTokens({ palette, pairing }) {
 }
 
 const DEFAULTS = /*EDITMODE-BEGIN*/{
-  "palette": "Lavender & Butter",
+  "palette": "Refined",
   "pairing": "Chunky · SIFONN",
   "showRibbon": true,
   "showMission": true,

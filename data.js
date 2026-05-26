@@ -12,7 +12,7 @@ window.SITE_DATA = {
     lede:
       "A free, structured roadmap for anyone building a career in data protection and privacy — written by someone actively on this journey. No paywalls, no fluff, no gatekeeping.",
     cta_primary: "Start the roadmap",
-    cta_secondary: "Read the articles",
+    cta_secondary: "Explore the areas",
     stats: [
       { n: "6", l: "Learning tracks" },
       { n: "16", l: "Phases" },

@@ -304,7 +304,7 @@ function HomePreview() {
 }
 
 
-const HERO_ROTATE = ["Roadmap", "Tools", "Career", "Articles"];
+const HERO_ROTATE = ["Roadmap", "Tools", "Career", "Resources"];
 
 function Hero({ data }) {
   const [wordIdx, setWordIdx] = useState(0);
@@ -345,7 +345,7 @@ function Hero({ data }) {
                 {data.cta_primary}
                 <span className="arr">→</span>
               </a>
-              <a className="pill-cta" href="./articles.html">
+              <a className="pill-cta" href="./area-dp.html">
                 {data.cta_secondary}
               </a>
             </div>
