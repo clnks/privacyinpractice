@@ -41,7 +41,6 @@ function useReveal() {
 
 // ───────── NAV ─────────
 const NAV_LINKS = [
-{ id: "roadmap", label: "Roadmap", href: "./roadmap.html" },
 { id: "areas", label: "Areas", href: null, dropdown: "areas" },
 { id: "tools", label: "Tools", href: null, dropdown: "tools" },
 { id: "career", label: "Career", href: "./career.html" },

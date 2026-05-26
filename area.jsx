@@ -112,6 +112,15 @@ function AreaRoadmap({ area }) {
           </li>
         ))}
       </ol>
+      {area.id === "dp" && (
+        <div className="ar-full-link">
+          <a href="./roadmap.html" className="ar-full-link-btn">
+            <span>See the full, detailed roadmap</span>
+            <span className="ar-full-link-arr" aria-hidden="true">→</span>
+          </a>
+          <p className="ar-full-link-note">Expanded tracks with milestones, resources &amp; progress tracking</p>
+        </div>
+      )}
     </section>
   );
 }
