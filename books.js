@@ -10,7 +10,7 @@ window.BOOKS = [
   {
     id: "zuboff-surveillance",
     location: "shelf",
-    coverUrl: "covers/zuboff.webp",
+    coverUrl: "covers/zuboff.jpg",
     title: "The Age of Surveillance Capitalism",
     spineLabel: "The Age of Surveillance Capitalism",
     author: "Shoshana Zuboff",
