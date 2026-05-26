@@ -314,14 +314,6 @@ function HomePreview() {
     </section>);
 
 }
-const HERO_STICKERS = [
-{ label: "UK GDPR", cls: "s-sun", rot: -3 },
-{ label: "DPIAs", cls: "s-blush", rot: 2 },
-{ label: "EU AI Act", cls: "s-mint", rot: -2 },
-{ label: "Article 28", cls: "s-paper", rot: 3 },
-{ label: "DSARs", cls: "s-ocean", rot: -2 },
-{ label: "ICO enforcement", cls: "s-paper", rot: 2 },
-{ label: "Cloud compliance", cls: "s-grape", rot: -3 }];
 
 
 function Hero({ data }) {
@@ -350,17 +342,6 @@ function Hero({ data }) {
               <a className="pill-cta" href="./articles.html">
                 {data.cta_secondary}
               </a>
-            </div>
-            <div className="stickers reveal">
-              {HERO_STICKERS.map((s) =>
-              <span
-                key={s.label}
-                className={"sticker " + s.cls}
-                style={{ "--rot": s.rot + "deg" }}>
-                
-                  {s.label}
-                </span>
-              )}
             </div>
           </div>
           <div className="reveal" style={{ position: "relative" }}>
