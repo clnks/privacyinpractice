@@ -725,7 +725,9 @@ function Footer() {
               <li><a href="./study.html">Study cards</a></li>
               <li><a href="./career.html">Career</a></li>
             </ul>
-            <h5 style={{marginTop:"20px"}}>Tools</h5>
+          </div>
+          <div>
+            <h5>Tools</h5>
             <ul>
               <li><a href="./calculators.html">Calculators</a></li>
               <li><a href="./glossary.html">Glossary</a></li>
@@ -736,35 +738,7 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h5>Legislation</h5>
-            <ul>
-              <li><a href="https://www.legislation.gov.uk/eur/2016/679/contents" target="_blank" rel="noopener">UK GDPR ↗</a></li>
-              <li><a href="https://www.legislation.gov.uk/ukpga/2018/12/contents" target="_blank" rel="noopener">Data Protection Act 2018 ↗</a></li>
-              <li><a href="https://www.legislation.gov.uk/ukpga/2025/14/contents" target="_blank" rel="noopener">Data (Use &amp; Access) Act 2025 ↗</a></li>
-              <li><a href="https://www.legislation.gov.uk/ukpga/2000/36/contents" target="_blank" rel="noopener">Freedom of Information Act 2000 ↗</a></li>
-            </ul>
-          </div>
-          <div>
-            <h5>Regulator &amp; Guidance</h5>
-            <ul>
-              <li><a href="https://ico.org.uk" target="_blank" rel="noopener">ICO ↗</a></li>
-              <li><a href="https://ico.org.uk/for-organisations/advice-for-small-organisations/make-your-own-privacy-notice/" target="_blank" rel="noopener">ICO — Privacy notices ↗</a></li>
-              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/" target="_blank" rel="noopener">ICO — DSARs ↗</a></li>
-              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" target="_blank" rel="noopener">ICO — DPIAs ↗</a></li>
-              <li><a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-and-governance/records-of-processing-activities/" target="_blank" rel="noopener">ICO — RoPA ↗</a></li>
-              <li><a href="https://ico.org.uk/action-weve-taken/enforcement/" target="_blank" rel="noopener">ICO — Enforcement ↗</a></li>
-            </ul>
-          </div>
-          <div>
-            <h5>Standards &amp; Bodies</h5>
-            <ul>
-              <li><a href="https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF ↗</a></li>
-              <li><a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001 ↗</a></li>
-              <li><a href="https://iapp.org" target="_blank" rel="noopener">IAPP ↗</a></li>
-              <li><a href="https://www.bcs.org/qualifications-and-certifications/certifications-for-professionals/data-protection/" target="_blank" rel="noopener">BCS ↗</a></li>
-              <li><a href="https://www.gov.uk/government/organisations/information-commissioners-office" target="_blank" rel="noopener">ICO — gov.uk ↗</a></li>
-            </ul>
-            <h5 style={{marginTop:"20px"}}>About</h5>
+            <h5>About</h5>
             <ul>
               <li><a href="./about.html">About this site</a></li>
               <li><a href="./privacy.html">Privacy notice</a></li>
@@ -784,9 +758,132 @@ function Footer() {
 
 }
 
+// ───────── PAGE SOURCES ─────────
+const PAGE_SOURCES = {
+  "roadmap": [
+    { title: "UK GDPR — full text", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/contents" },
+    { title: "Data Protection Act 2018", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2018/12/contents" },
+    { title: "Data (Use & Access) Act 2025", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2025/14/contents" },
+    { title: "ICO: Guide to the UK GDPR", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" },
+    { title: "BCS Practitioner Certificate in Data Protection", note: "bcs.org", url: "https://www.bcs.org/qualifications-and-certifications/certifications-for-professionals/data-protection/" },
+    { title: "IAPP CIPP/E certification", note: "iapp.org", url: "https://iapp.org/certify/cippe/" },
+    { title: "IAPP CIPM certification", note: "iapp.org", url: "https://iapp.org/certify/cipm/" },
+  ],
+  "study": [
+    { title: "UK GDPR — Article 5: Principles", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/5" },
+    { title: "UK GDPR — Articles 12–22: Data subject rights", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/12" },
+    { title: "UK GDPR — Articles 33–34: Breach notification", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/33" },
+    { title: "ICO: Guide to the UK GDPR — full resource", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" },
+    { title: "ICO: Special category data", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/special-category-data/" },
+    { title: "DPA 2018 Schedule 1 & 2 conditions", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2018/12/schedule/1" },
+  ],
+  "career": [
+    { title: "ICO: Data Protection Officer — guidance", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-and-governance/data-protection-officers/" },
+    { title: "IAPP: Career resources", note: "iapp.org", url: "https://iapp.org/resources/career/" },
+    { title: "BCS: Data protection qualifications", note: "bcs.org", url: "https://www.bcs.org/qualifications-and-certifications/certifications-for-professionals/data-protection/" },
+    { title: "ICO: Enforcement actions & decisions", note: "ico.org.uk", url: "https://ico.org.uk/action-weve-taken/enforcement/" },
+    { title: "UK GDPR — Article 37: DPO designation", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/37" },
+  ],
+  "glossary": [
+    { title: "UK GDPR — Article 4: Definitions", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/4" },
+    { title: "ICO: Glossary", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/glossary/" },
+    { title: "DPA 2018 — interpretation provisions", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2018/12/part/1/chapter/1" },
+    { title: "Data (Use & Access) Act 2025", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2025/14/contents" },
+  ],
+  "calculators": [
+    { title: "UK GDPR — Article 12: Timescales for responding to requests", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/12" },
+    { title: "UK GDPR — Article 33: Breach notification to the ICO (72 hours)", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/33" },
+    { title: "UK GDPR — Article 34: Communication of breach to individuals", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/34" },
+    { title: "ICO: Right of access — timescales", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/how-do-we-respond-to-a-request/" },
+    { title: "ICO: Reporting a personal data breach", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/report-a-breach/" },
+  ],
+  "artefacts": [
+    { title: "UK GDPR — Article 30: Records of processing activities", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/30" },
+    { title: "UK GDPR — Article 35: Data Protection Impact Assessments", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/35" },
+    { title: "UK GDPR — Article 28: Data processor contracts", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/28" },
+    { title: "ICO: Accountability and governance templates", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/" },
+    { title: "ICO: DPIAs — when are they required?", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" },
+  ],
+  "resources": [
+    { title: "ICO: Guidance and resources hub", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/" },
+    { title: "IAPP: Knowledge base", note: "iapp.org", url: "https://iapp.org/resources/" },
+    { title: "BCS: Data protection resources", note: "bcs.org", url: "https://www.bcs.org/qualifications-and-certifications/certifications-for-professionals/data-protection/" },
+    { title: "NIST AI Risk Management Framework", note: "nist.gov", url: "https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" },
+    { title: "Panopticon Blog — 11KBW", note: "panopticonblog.com", url: "https://panopticonblog.com/" },
+  ],
+  "area-dp": [
+    { title: "UK GDPR — full text", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/contents" },
+    { title: "Data Protection Act 2018", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2018/12/contents" },
+    { title: "Data (Use & Access) Act 2025", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2025/14/contents" },
+    { title: "ICO: Right of access (DSARs)", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-of-access/" },
+    { title: "ICO: Data Protection Impact Assessments", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/" },
+    { title: "ICO: Records of Processing Activities", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-and-governance/records-of-processing-activities/" },
+    { title: "ICO: Personal data breaches", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/personal-data-breaches/" },
+    { title: "ICO: Special category data", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/lawful-basis/special-category-data/" },
+  ],
+  "area-ai": [
+    { title: "EU AI Act — Regulation (EU) 2024/1689", note: "eur-lex.europa.eu", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" },
+    { title: "NIST AI Risk Management Framework 1.0", note: "nist.gov", url: "https://www.nist.gov/artificial-intelligence/ai-risk-management-framework" },
+    { title: "ICO: AI and data protection", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/" },
+    { title: "UK AI Safety Institute — guidance", note: "gov.uk", url: "https://www.gov.uk/government/organisations/ai-safety-institute" },
+    { title: "ICO: Guidance on AI and data protection risk toolkit", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/guidance-on-ai-and-data-protection/" },
+    { title: "UK GDPR — Article 22: Automated decision-making", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/eur/2016/679/article/22" },
+  ],
+  "area-aml": [
+    { title: "Proceeds of Crime Act 2002", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2002/29/contents" },
+    { title: "Money Laundering & Terrorist Financing Regulations 2017", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/uksi/2017/692/contents" },
+    { title: "FATF: Recommendations", note: "fatf-gafi.org", url: "https://www.fatf-gafi.org/en/topics/fatf-recommendations.html" },
+    { title: "FCA: Financial crime guide", note: "fca.org.uk", url: "https://www.handbook.fca.org.uk/handbook/FC/" },
+    { title: "NCA: Suspicious Activity Reports", note: "nationalcrimeagency.gov.uk", url: "https://www.nationalcrimeagency.gov.uk/what-we-do/crime-threats/money-laundering-and-illicit-finance/suspicious-activity-reports" },
+  ],
+  "area-conduct": [
+    { title: "FCA: Conduct of Business Sourcebook (COBS)", note: "fca.org.uk", url: "https://www.handbook.fca.org.uk/handbook/COBS/" },
+    { title: "FCA: Senior Managers and Certification Regime", note: "fca.org.uk", url: "https://www.fca.org.uk/firms/senior-managers-certification-regime" },
+    { title: "FCA: Consumer Duty", note: "fca.org.uk", url: "https://www.fca.org.uk/firms/consumer-duty" },
+    { title: "Financial Services and Markets Act 2000", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2000/8/contents" },
+  ],
+  "area-cyber": [
+    { title: "NIST Cybersecurity Framework 2.0", note: "nist.gov", url: "https://www.nist.gov/cyberframework" },
+    { title: "NCSC: Cyber Essentials scheme", note: "ncsc.gov.uk", url: "https://www.ncsc.gov.uk/cyberessentials/overview" },
+    { title: "ISO/IEC 27001:2022 — Information security management", note: "iso.org", url: "https://www.iso.org/standard/27001" },
+    { title: "ICO: Security — a guide to the security principle", note: "ico.org.uk", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/" },
+    { title: "NCSC: 10 Steps to Cyber Security", note: "ncsc.gov.uk", url: "https://www.ncsc.gov.uk/collection/10-steps" },
+  ],
+  "area-fintech": [
+    { title: "FCA: Regulatory framework for fintech", note: "fca.org.uk", url: "https://www.fca.org.uk/innovation" },
+    { title: "Payment Services Regulations 2017 (PSD2)", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/uksi/2017/752/contents" },
+    { title: "FCA: Open Banking", note: "fca.org.uk", url: "https://www.fca.org.uk/consumers/open-banking" },
+    { title: "Data (Use & Access) Act 2025 — smart data provisions", note: "legislation.gov.uk", url: "https://www.legislation.gov.uk/ukpga/2025/14/contents" },
+    { title: "FCA: Consumer Duty", note: "fca.org.uk", url: "https://www.fca.org.uk/firms/consumer-duty" },
+  ],
+};
+
+function PageSources({ sources }) {
+  return (
+    <section className="page-sources">
+      <div className="wrap">
+        <div className="psrc-head">Sources</div>
+        <ol className="psrc-list">
+          {sources.map((s, i) => (
+            <li key={i} className="psrc-item">
+              <span className="psrc-n">{String(i + 1).padStart(2, "0")}</span>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" className="psrc-link">
+                <span className="psrc-title">{s.title}</span>
+                {s.note && <span className="psrc-note">{s.note}</span>}
+                <span className="psrc-arr" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 // expose
 Object.assign(window, {
   Nav, Hero, Mission, Ribbon, SectionHead, HomePreview,
   Roadmap, Journey, Articles, Resources, About, Footer,
+  PageSources, PAGE_SOURCES,
   useReveal
 });

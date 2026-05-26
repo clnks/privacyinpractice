@@ -192,6 +192,11 @@ function App() {
       {PAGE === "articles" && <Articles data={D.articles} />}
       {PAGE === "resources"&& <Resources data={D.resources} />}
       {PAGE === "about"    && <About data={D.about} />}
+      {(() => {
+        const key = PAGE === "area" ? "area-" + (window.AREA_ID || "") : PAGE;
+        const srcs = window.PAGE_SOURCES && window.PAGE_SOURCES[key];
+        return srcs ? <PageSources sources={srcs} /> : null;
+      })()}
       <Footer />
       {window.SearchModal && <window.SearchModal />}
       {window.StorageBanner && <window.StorageBanner />}
