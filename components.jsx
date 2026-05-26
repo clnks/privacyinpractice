@@ -77,6 +77,12 @@ function AreasDropdown({ open, onClose, areaActive }) {
           </li>
         ))}
       </ul>
+      <div className="areas-pop-foot">
+        <a className="apm-all" href="./areas.html" onClick={onClose}>
+          Compare all areas
+          <span className="apm-all-arr" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   );
 }
@@ -777,6 +783,7 @@ function Footer() {
           <div>
             <h5>Learn</h5>
             <ul>
+              <li><a href="./areas.html">Practice areas</a></li>
               <li><a href="./roadmap.html">Roadmap</a></li>
               <li><a href="./study.html">Study cards</a></li>
               <li><a href="./career.html">Career</a></li>

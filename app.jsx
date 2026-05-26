@@ -181,7 +181,8 @@ function App() {
       {PAGE === "roadmap"  && <Roadmap tracks={D.tracks} />}
       {PAGE === "study"    && <Study tweaks={{ showAnswers: t.studyShowAnswers, trackFilter: t.studyTrack }} />}
       {PAGE === "career"   && <Career />}
-      {PAGE === "area"     && <Area />}
+      {PAGE === "area"          && <Area />}
+      {PAGE === "areas-landing" && window.AreasLandingPage && <window.AreasLandingPage />}
       {PAGE === "artefacts"   && window.ArtefactsPage   && <window.ArtefactsPage />}
       {PAGE === "glossary"    && window.GlossaryPage    && <window.GlossaryPage />}
       {PAGE === "calculators" && window.CalculatorsPage && <window.CalculatorsPage />}
