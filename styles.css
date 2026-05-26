@@ -37,8 +37,8 @@
 
   --display: "SIFONN PRO", -apple-system, BlinkMacSystemFont, sans-serif;
   --serif: "Lora", "Cormorant Garamond", Georgia, serif;
-  --sans: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mono: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --hand: "Lora", Georgia, serif;
 }
 

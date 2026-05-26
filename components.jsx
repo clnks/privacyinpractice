@@ -45,7 +45,6 @@ const NAV_LINKS = [
 { id: "areas", label: "Areas", href: null, dropdown: "areas" },
 { id: "tools", label: "Tools", href: null, dropdown: "tools" },
 { id: "career", label: "Career", href: "./career.html" },
-{ id: "journey", label: "Journey", href: "./journey.html" },
 { id: "articles", label: "Articles", href: "./articles.html" },
 { id: "resources", label: "Resources", href: "./resources.html" },
 { id: "about", label: "About", href: "./about.html" }];
@@ -261,15 +260,6 @@ const HOME_SECTIONS = [
   badge: "16 phases"
 },
 {
-  href: "./journey.html",
-  num: "II.",
-  label: "My journey",
-  blurb:
-  "Where I am on the path right now — qualifications, study logs, and what's clicking each week.",
-  bg: "cream",
-  badge: "Updated weekly"
-},
-{
   href: "./articles.html",
   num: "III.",
   label: "Articles",
@@ -316,7 +306,23 @@ function HomePreview() {
 }
 
 
+const HERO_ROTATE = ["Roadmap", "Tools", "Career", "Articles"];
+
 function Hero({ data }) {
+  const [wordIdx, setWordIdx] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setWordIdx(i => (i + 1) % HERO_ROTATE.length);
+        setVisible(true);
+      }, 350);
+    }, 2800);
+    return () => clearInterval(iv);
+  }, []);
+
   return (
     <section className="hero" id="top">
       <div className="wrap">
@@ -329,10 +335,12 @@ function Hero({ data }) {
             </div>
             <h1 className="reveal">
               <span className="a">{data.title_a}</span>
-              <span className="b" style={{ color: "rgb(255, 255, 255)" }}>{data.title_b}</span>
+              <span className="b hero-word" style={{ opacity: visible ? 1 : 0, transition: "opacity 0.35s ease" }}>
+                {HERO_ROTATE[wordIdx]}
+              </span>
             </h1>
             <p className="lede reveal">
-              A <span className="hl">free, structured roadmap</span> for anyone building a career in data protection and privacy — written by someone <span className="hl hl-blush">actively on this journey</span>. No paywalls, no fluff, no gatekeeping.
+              A <span className="hl">free, structured roadmap</span> for anyone building a career in data protection and privacy — written by someone actively on this journey. No paywalls, no fluff, no gatekeeping.
             </p>
             <div className="cta-row reveal">
               <a className="sticker-cta" href="./roadmap.html">
@@ -355,20 +363,6 @@ function Hero({ data }) {
               <div className="meta">
                 <span>Field journal</span>
                 <span>№ 01 / 2026</span>
-              </div>
-            </div>
-            <div className="badge-card b-coral" style={{ left: -28, top: -22 }}>
-              <span className="ic">✎</span>
-              <div>
-                <span className="l1">Currently</span>
-                <span className="l2">BCS Practitioner</span>
-              </div>
-            </div>
-            <div className="badge-card b-mint" style={{ right: -16, bottom: -28 }}>
-              <span className="ic">✓</span>
-              <div>
-                <span className="l1">Certified</span>
-                <span className="l2">Securiti AI Gov.</span>
               </div>
             </div>
           </div>
@@ -732,7 +726,6 @@ function Footer() {
               <li><a href="./roadmap.html">Roadmap</a></li>
               <li><a href="./study.html">Study cards</a></li>
               <li><a href="./career.html">Career</a></li>
-              <li><a href="./journey.html">Journey</a></li>
               <li><a href="./articles.html">Articles</a></li>
             </ul>
           </div>
@@ -760,7 +753,7 @@ function Footer() {
         </div>
         <div className="foot-bottom">
           <span>© Clarissa Ankrah, 2026 · Privacy in Practice</span>
-          <span>Set in SIFONN PRO, Bricolage Grotesque &amp; Lora · Free, always</span>
+          <span>Set in SIFONN PRO, Helvetica Neue &amp; Lora · Free, always</span>
           <span>UK · London</span>
         </div>
       </div>

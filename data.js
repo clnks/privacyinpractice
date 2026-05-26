@@ -14,7 +14,7 @@ window.SITE_DATA = {
     cta_primary: "Start the roadmap",
     cta_secondary: "Read the articles",
     stats: [
-      { n: "4", l: "Learning tracks" },
+      { n: "6", l: "Learning tracks" },
       { n: "16", l: "Phases" },
       { n: "Free", l: "Always" },
     ],
