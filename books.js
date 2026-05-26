@@ -10,7 +10,7 @@ window.BOOKS = [
   {
     id: "zuboff-surveillance",
     location: "shelf",
-    coverUrl: "https://covers.openlibrary.org/b/isbn/9781610395694-L.jpg",
+    coverUrl: "covers/zuboff.webp",
     title: "The Age of Surveillance Capitalism",
     spineLabel: "The Age of Surveillance Capitalism",
     author: "Shoshana Zuboff",
@@ -48,7 +48,7 @@ window.BOOKS = [
   {
     id: "carey-uk-law",
     location: "shelf",
-    coverUrl: "https://covers.openlibrary.org/b/isbn/9780198812198-L.jpg",
+    coverUrl: "covers/carey.jpg",
     title: "Data Protection: A Practical Guide to UK Law",
     spineLabel: "DP — A Practical Guide to UK Law",
     author: "Peter Carey",
@@ -85,7 +85,7 @@ window.BOOKS = [
   {
     id: "itgp-implementation",
     location: "shelf",
-    coverUrl: "https://covers.openlibrary.org/b/isbn/9781787783904-L.jpg",
+    coverUrl: "covers/itgp-gdpr.webp",
     title: "EU GDPR: An Implementation & Compliance Guide",
     spineLabel: "GDPR Implementation & Compliance",
     author: "IT Governance Publishing",
@@ -105,7 +105,7 @@ window.BOOKS = [
   {
     id: "ai-snake-oil",
     location: "shelf",
-    coverUrl: "https://books.google.com/books/content?vid=ISBN:9780691249131&printsec=frontcover&img=1&zoom=3",
+    coverUrl: "covers/ai-snake-oil.jpg",
     title: "AI Snake Oil",
     spineLabel: "AI Snake Oil",
     author: "Arvind Narayanan & Sayash Kapoor",
@@ -375,7 +375,7 @@ window.BOOKS = [
   {
     id: "browder-red-notice",
     location: "shelf",
-    coverUrl: "https://covers.openlibrary.org/b/isbn/9781476755892-L.jpg",
+    coverUrl: "covers/red-notice.jpg",
     title: "Red Notice",
     spineLabel: "Red Notice",
     author: "Bill Browder",
