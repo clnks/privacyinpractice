@@ -334,4 +334,60 @@ window.AREAS = [
       { q: "AML vs Sanctions — which is hotter right now?", a: "Sanctions. The post-2022 Russia regime and the ongoing North Korea / Iran / kleptocracy work has created a structural skills gap. Sanctions specialists are commanding 15–25% premiums over generalist AML at the senior end." },
     ],
   },
+
+  /* ─── 7. GRC & Compliance ───────────────────────────────────── */
+  {
+    id: "grc",
+    label: "GRC & Compliance",
+    kicker: "Governance, Risk & Compliance",
+    glyph: "⊕",
+    color: "slate",
+    oneliner: "The discipline of building and running the systems that keep an organisation aligned — to its regulators, its risk appetite, and its own policies.",
+    about: {
+      why: "Every regulated organisation needs people who can translate board risk appetite into operational controls, run an audit cycle, and keep a policy framework current. GRC is the connective tissue of compliance: it sits across data protection, cyber, financial crime, and conduct — and it's the discipline most likely to lead to a Chief Risk Officer or CCO seat.",
+      who: "Internal auditors moving into governance, compliance analysts seeking a broader remit, risk managers in banking or insurance, quality or policy professionals in regulated sectors, and anyone who wants a career that spans multiple frameworks rather than one specialism.",
+      shape: "Process-heavy at the junior end (controls testing, policy maintenance, risk registers), increasingly strategic and cross-functional at the senior end. Strong overlap with every other area on this site — GRC is the only horizontal discipline here.",
+    },
+    phases: [
+      { n: "01", title: "GRC Foundations", blurb: "The language, models, and mental frames every GRC practitioner uses.", beats: ["Three lines of defence (IIA model)", "Risk appetite vs risk tolerance vs risk capacity", "Governance structures: board, committee, first/second/third line", "Controls: preventive, detective, corrective, directive", "The relationship between policy, standard, procedure, and guideline"] },
+      { n: "02", title: "Risk Management Frameworks", blurb: "The international standards for identifying, assessing, and treating risk.", beats: ["ISO 31000: risk management principles and guidelines", "COSO ERM: enterprise risk management cube", "Risk registers: likelihood × impact matrices", "Risk appetite statements and bow-tie analysis", "Emerging risk: AI, climate, third-party concentration"] },
+      { n: "03", title: "Compliance Programme Design", blurb: "Building and running a compliance function — not just knowing the rules.", beats: ["Policy lifecycle: draft → approve → publish → train → monitor → review", "Controls frameworks: ISO 27001 Annex A, NIST CSF, COBIT 2019", "Regulatory mapping and obligation registers", "Horizon scanning: UK regulatory pipeline + FCA, PRA, ICO updates", "Compliance monitoring plans and effectiveness testing"] },
+      { n: "04", title: "Audit & Assurance", blurb: "Internal audit standards and the controls-testing craft.", beats: ["IIA International Standards for the Professional Practice of Internal Auditing", "Audit universe and annual audit plan", "Fieldwork: walkthroughs, sampling, evidence standards", "Finding classification: critical / high / medium / low", "Audit reporting and management action plans", "External vs internal audit relationship"] },
+      { n: "05", title: "Third-Party & Operational Risk", blurb: "The risk that sits outside your four walls.", beats: ["TPRM: tiering, due diligence, ongoing monitoring", "Vendor risk assessments and contractual clauses", "Business continuity and ISO 22301 basics", "Operational resilience: FCA/PRA policy statement", "Concentration risk and single points of failure"] },
+      { n: "06", title: "Career Translation", blurb: "Turn GRC knowledge into the roles that actually pay.", beats: ["Portfolio: risk register, compliance monitoring plan, audit report extract, policy template", "Certs: CRISC → CISA (ISACA) or GRCP (OCEG) → CIA (IIA)", "Target sectors: financial services, Big Four advisory, NHS, regulated tech", "GRC tools fluency: RSA Archer, ServiceNow GRC, MetricStream — mention in CV"] },
+    ],
+    certs: [
+      { name: "CRISC — Certified in Risk and Information Systems Control", issuer: "ISACA", cost: "~£500 exam + £45/yr membership", level: "Practitioner", note: "The most recognised IT/operational risk cert globally. Preferred by financial services and Big Four. Requires 3 years' experience." },
+      { name: "CISA — Certified Information Systems Auditor", issuer: "ISACA", cost: "~£500 exam", level: "Practitioner", note: "The gold standard for IT audit. Pairs well with an internal audit career path. Requires 5 years' IS/audit experience (substitutions available)." },
+      { name: "GRCP — GRC Professional", issuer: "OCEG", cost: "~£300", level: "Foundational", note: "Broad, framework-agnostic GRC cert. Solid starting point; no experience requirements. Less known by UK hiring managers than ISACA certs but growing." },
+      { name: "CIA — Certified Internal Auditor", issuer: "IIA", cost: "~£500 (3 parts)", level: "Practitioner", note: "The definitive internal audit credential. If you're targeting a Head of Internal Audit or CAE role, this is non-negotiable." },
+      { name: "ISO 27001 Lead Implementer / Lead Auditor", issuer: "PECB / BSI / CQI", cost: "£1,500–£2,500", level: "Specialist", note: "Operational and in demand. Most organisations undergoing ISO 27001 certification need someone who has been through it. Differentiates heavily." },
+      { name: "ICA Diploma in Governance, Risk & Compliance", issuer: "ICA", cost: "£3,500", level: "Practitioner", note: "UK-focused, well-regarded in financial services. Good alternative if you come from a non-IT background and prefer a legal/regulatory framing." },
+    ],
+    portfolio: [
+      { name: "Risk register (worked example)", purpose: "The single most-used GRC artefact — demonstrating you can build and maintain one matters.", contents: "Risk ID · description · likelihood · impact · inherent rating · controls · control owner · residual rating · appetite alignment · review date" },
+      { name: "Compliance monitoring plan", purpose: "Shows you can design a structured programme, not just react to audits.", contents: "Regulatory obligation · monitoring activity · frequency · evidence type · owner · RAG status · escalation trigger" },
+      { name: "Internal audit report (extract)", purpose: "Demonstrates audit craft — finding clarity, evidence sufficiency, management tone.", contents: "Executive summary · scope & methodology · finding (condition / criteria / cause / effect) · recommendation · management response · agreed action plan" },
+      { name: "Policy template with lifecycle notes", purpose: "Policy writing is a core GRC skill rarely tested in interviews but heavily weighted on the job.", contents: "Purpose · scope · definitions · requirements · roles & responsibilities · exceptions process · review schedule · version history" },
+      { name: "Third-party risk assessment (fictional supplier)", purpose: "TPRM is a gap in most junior GRC candidates' portfolios.", contents: "Supplier tier · data access · residency · certifications held · questionnaire summary · risk rating · mitigating controls · review date" },
+    ],
+    differentiate: [
+      { head: "Pair GRC with a sector lens", body: "GRC generalists are plentiful. GRC + financial services (FCA SYSC rules, PRA operational resilience) or GRC + healthcare (CQC, NHS DSP Toolkit) commands a premium. Pick one sector and go deep on its regulatory stack." },
+      { head: "Get a GRC tool on your CV", body: "RSA Archer, ServiceNow GRC, and MetricStream appear in most senior JDs. You don't need certification — a self-guided free trial with a documented use case (even fictional) is enough to claim practical familiarity honestly." },
+      { head: "Internal audit → GRC is the classic move", body: "Three years in internal audit gives you evidence collection, finding classification, management engagement, and a clear understanding of control design. It's the most direct path to a Head of GRC role and the background most CCOs share." },
+    ],
+    publications: [
+      { title: "IIA — International Standards & Practice Guides", author: "Institute of Internal Auditors", type: "Free", note: "Primary source for audit standards. The 2024 Global Internal Audit Standards update is essential reading.", url: "https://www.theiia.org/en/standards/" },
+      { title: "ISACA Journal & COBIT Publications", author: "ISACA", type: "Free/paid", note: "Best resource for IT governance and COBIT 2019. Members get most content free.", url: "https://www.isaca.org/resources/isaca-journal" },
+      { title: "OCEG GRC Illustrated Series", author: "OCEG", type: "Free", note: "Practical, visual guides to GRC fundamentals. Start with the GRC Capability Model.", url: "https://www.oceg.org/resources/grc-illustrated-series/" },
+      { title: "FCA & PRA Policy Papers — Operational Resilience", author: "FCA / PRA", type: "Free", note: "The March 2021 operational resilience policy statement redefined what compliance programmes need to prove.", url: "https://www.bankofengland.co.uk/prudential-regulation/publication/2021/march/operational-resilience-ss1-21" },
+      { title: "Compliance Week UK", author: "Compliance Week", type: "Free (limited)", note: "Good UK-focused news on regulatory developments across GRC, AML, conduct, and privacy.", url: "https://www.complianceweek.com/" },
+    ],
+    faq: [
+      { q: "Is GRC just internal audit with a rebrand?", a: "No — but they're closely related. Audit is the assurance function (independent testing). GRC is the management function (building and running the programme being tested). You can move between them; they share vocabulary and methods but have distinct accountabilities." },
+      { q: "How is GRC different from the other areas on this site?", a: "Every other area here is a vertical specialism (DP, AML, AI, etc.). GRC is horizontal — it's the framework that governs how an organisation manages all of them. A Head of GRC probably has a DPO, CISO, and MLRO reporting to them, or sits alongside them in a risk committee." },
+      { q: "What's the ceiling in GRC?", a: "Chief Risk Officer (CRO) or Chief Compliance Officer (CCO) at a regulated firm — both C-suite, both well-compensated (£200k–£500k+ at large financial institutions). The path is long (10–15 years) but the roles are stable and high-status." },
+      { q: "Do I need to be technical?", a: "Less so than cyber, but increasingly yes at the senior end. Understanding IT controls, cloud risk, and AI governance is becoming expected. The good news: GRC practitioners who can hold a technical conversation are rare and well-rewarded; you don't need to code, just translate." },
+    ],
+  },
 ];

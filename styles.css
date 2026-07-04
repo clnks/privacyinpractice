@@ -35,6 +35,7 @@
   --accent-soft:   #ece2f5;
   --highlight: rgba(196, 177, 221, 0.20);
 
+  --slate: #b8bfcc;
   --display: "SIFONN PRO", -apple-system, BlinkMacSystemFont, sans-serif;
   --serif: "Lora", "Cormorant Garamond", Georgia, serif;
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1252,6 +1253,7 @@ footer ul li a:hover { opacity: 1; color: var(--accent); }
 .sticker.s-cream { background: var(--cream); border-color: var(--plum); }
 .sticker.s-paper { background: var(--paper); border-color: var(--plum); }
 .sticker.s-ocean { background: var(--lavender); border-color: var(--plum); }
+.sticker.s-slate { background: var(--slate, #b8bfcc); border-color: var(--plum); }
 .sticker.s-grape { background: var(--plum); color: var(--cream); border-color: var(--plum); }
 
 /* highlighter for inline emphasis */
@@ -3736,6 +3738,7 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 .areas-pop-mint     .apm-glyph { background: var(--mint); }
 .areas-pop-coral    .apm-glyph { background: var(--coral); }
 .areas-pop-ocean    .apm-glyph { background: var(--ocean, #b5c8d9); color: var(--paper); border-color: var(--ink); }
+.areas-pop-slate    .apm-glyph { background: var(--slate, #b8bfcc); border-color: var(--ink); }
 .apm-body { display: grid; gap: 2px; min-width: 0; }
 .apm-label {
   font-family: var(--serif);
@@ -3892,6 +3895,7 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 .area-hero-mint     { background: var(--mint); }
 .area-hero-coral    { background: var(--coral); }
 .area-hero-ocean    { background: var(--ocean, #b5c8d9); }
+.area-hero-slate    { background: var(--slate, #b8bfcc); }
 .area-hero-inner {
   display: grid;
   grid-template-columns: 160px 1fr;
@@ -5222,6 +5226,7 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 .gl-area-mint     { background: var(--mint); }
 .gl-area-coral    { background: var(--coral); }
 .gl-area-ocean    { background: var(--ocean, #b5c8d9); }
+.gl-area-slate    { background: var(--slate, #b8bfcc); }
 .gl-short {
   font-family: var(--serif);
   font-style: italic;
@@ -5967,6 +5972,7 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 .bk-cover-mint     { background: var(--mint); }
 .bk-cover-coral    { background: var(--coral); }
 .bk-cover-ocean    { background: var(--ocean, #b5c8d9); }
+.bk-cover-slate    { background: var(--slate, #b8bfcc); }
 .bk-cover-plum     { background: var(--plum); border-color: #000; }
 
 /* real cover image from coverUrl — fills frame, sits above fallback */

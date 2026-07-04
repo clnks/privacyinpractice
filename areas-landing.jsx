@@ -97,6 +97,21 @@ const AREA_META = {
     overlaps: ["Financial Conduct", "FinTech"],
     top_employers: "HSBC · NatWest · Monzo · Revolut · NCA",
   },
+  grc: {
+    entry_salary: "£28k–£45k",
+    senior_salary: "£90k–£175k",
+    demand: "Very High",
+    demand_n: 4,
+    time_to_role: "6–12 months",
+    core_cert: "CRISC (ISACA) / CIA (IIA)",
+    regulator: "Sector-dependent",
+    market_size: 5,
+    remote: "Hybrid",
+    balance: "Process-led",
+    entry_bg: "Internal audit, compliance, risk management, policy, or quality",
+    overlaps: ["Data Protection", "AI Governance", "Cyber Security", "Financial Conduct", "AML"],
+    top_employers: "Big Four · HSBC · Lloyds · NHS · FCA · BAE Systems",
+  },
 };
 
 // Demand pill style
