@@ -523,6 +523,11 @@ function Track({ t, idx, progress, onToggle }) {
           <span className="eyebrow">Track {t.num}</span>
           <h3 className="track-title">{t.title}</h3>
           <p className="track-kicker">{t.kicker}</p>
+          {t.areaHref && (
+            <a className="track-area-link" href={t.areaHref}>
+              Explore {t.areaLabel} →
+            </a>
+          )}
         </div>
         <div className="track-glyph">{t.glyph}</div>
       </div>
@@ -537,6 +542,33 @@ function Track({ t, idx, progress, onToggle }) {
       </div>
     </div>);
 
+}
+
+function RoadmapAreas() {
+  const areas = (window.AREAS || []);
+  if (!areas.length) return null;
+  return (
+    <section className="roadmap-areas">
+      <div className="wrap">
+        <div className="ra-head">
+          <h2 className="ra-title">Explore practice areas</h2>
+          <p className="ra-sub">Each area has its own roadmap, certification path, and portfolio guide. Click in to go deeper.</p>
+        </div>
+        <div className="ra-grid">
+          {areas.map(a => (
+            <a key={a.id} className={"ra-card ra-card-" + a.color} href={"./area-" + a.id + ".html"}>
+              <span className="ra-glyph">{a.glyph}</span>
+              <div>
+                <span className="ra-label">{a.label}</span>
+                <span className="ra-kicker">{a.kicker}</span>
+              </div>
+              <span className="ra-arrow">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Roadmap({ tracks }) {
@@ -583,6 +615,8 @@ function Roadmap({ tracks }) {
           )}
         </div>
       </div>
+
+      <RoadmapAreas />
 
       <section className="roadmap">
         <div className="wrap">

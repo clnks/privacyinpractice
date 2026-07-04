@@ -25,6 +25,8 @@ window.SITE_DATA = {
       glyph: "§",
       title: "Legal & Regulatory Foundations",
       kicker: "Build the knowledge base everything else depends on",
+      areaHref: "./area-dp.html",
+      areaLabel: "Data Protection",
       phases: [
         {
           n: "01",
@@ -76,6 +78,8 @@ window.SITE_DATA = {
       glyph: "¶",
       title: "Operational Data Protection",
       kicker: "The day-to-day work of a data protection practitioner",
+      areaHref: "./area-dp.html",
+      areaLabel: "Data Protection",
       phases: [
         {
           n: "04",
@@ -141,6 +145,8 @@ window.SITE_DATA = {
       glyph: "◬",
       title: "Specialist: AI Governance & Cloud",
       kicker: "The highest-value niche at the intersection of technical and legal",
+      areaHref: "./area-ai.html",
+      areaLabel: "AI Governance",
       phases: [
         {
           n: "08",
@@ -191,6 +197,8 @@ window.SITE_DATA = {
       glyph: "✦",
       title: "Land the Role",
       kicker: "Turn your knowledge into proof that gets you hired",
+      areaHref: "./career.html",
+      areaLabel: "Career Hub",
       phases: [
         {
           n: "11",

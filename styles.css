@@ -476,6 +476,107 @@ hr.rule-strong {
   opacity: 0.7;
 }
 
+/* track area link */
+.track-area-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.15s;
+}
+.track-area-link:hover { opacity: 0.7; }
+
+/* roadmap area grid */
+.roadmap-areas {
+  background: var(--bg-2);
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 56px 0;
+}
+.ra-head {
+  margin-bottom: 32px;
+}
+.ra-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+.ra-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-2);
+  font-size: 17px;
+  margin: 0;
+  max-width: 58ch;
+}
+.ra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+}
+.ra-card {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 20px;
+  background: var(--bg);
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  transition: background 0.15s, transform 0.15s;
+}
+.ra-card:hover { background: var(--paper); transform: translateY(-2px); }
+.ra-glyph {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--accent-strong);
+  line-height: 1;
+  text-align: center;
+}
+.ra-card > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ra-label {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.ra-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ra-arrow {
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.15s, color 0.15s;
+}
+.ra-card:hover .ra-arrow { transform: translateX(4px); color: var(--accent-strong); }
+
+/* area card colour accents */
+.ra-card-lavender .ra-glyph { color: var(--accent-strong); }
+.ra-card-blush    .ra-glyph { color: #8b4a4a; }
+.ra-card-sun      .ra-glyph { color: #7a6400; }
+.ra-card-mint     .ra-glyph { color: #3a5a2a; }
+.ra-card-coral    .ra-glyph { color: #7a4a1a; }
+.ra-card-ocean    .ra-glyph { color: #2a4a6a; }
+.ra-card-slate    .ra-glyph { color: #3a4a5a; }
+
 /* phase rows */
 .phases {
   display: flex;
