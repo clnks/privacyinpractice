@@ -3,7 +3,7 @@ window.SITE_DATA = {
   brand: {
     mark: "Privacy",
     word: "in Practice",
-    tagline: "Free community resource — updated as I learn",
+    tagline: "Free community resource, updated as I learn",
   },
   hero: {
     eyebrow: "A field journal",

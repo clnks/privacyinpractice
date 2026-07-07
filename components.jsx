@@ -280,7 +280,7 @@ const HOME_SECTIONS = [
   num: "III.",
   label: "Articles",
   blurb:
-  "Plain-English explainers on GDPR, ICO enforcement, AI governance and cloud risk. Written for practitioners, not lawyers.",
+  "Short explainers on GDPR, AI governance, financial regulation and cloud risk. Written for practitioners.",
   bg: "sun",
   badge: "5 published"
 },
@@ -357,7 +357,7 @@ function Hero({ data }) {
               </span>
             </h1>
             <p className="lede reveal">
-              A <span className="hl">free, structured roadmap</span> for anyone building a career in privacy, risk, or regulation — written by someone actively on this journey. No paywalls, no fluff, no gatekeeping.
+              A <span className="hl">free, structured roadmap</span> for anyone building a career in privacy, risk, or regulation, written by someone actively on this journey. No paywalls, no fluff, no gatekeeping.
             </p>
             <div className="cta-row reveal">
               <a className="sticker-cta" href="./roadmap.html">
@@ -610,7 +610,7 @@ function Roadmap({ tracks }) {
         num="I."
         eyebrow="The Complete Path"
         title="From zero to privacy and regulation professional"
-        sub="Four tracks covering the foundations, operations, specialist knowledge, and the career tools you need. Built from real job requirements and active study — not from a textbook." />
+        sub="Four tracks covering foundations, operations, specialist knowledge and the career tools you need. Built from real job requirements and active study, not a textbook." />
 
       <div className="wrap roadmap-progress-wrap">
         <div className="roadmap-progress">
@@ -713,7 +713,7 @@ function Articles({ data }) {
         num="III."
         eyebrow="Articles"
         title="Regulation, explained clearly"
-        sub="Plain-English breakdowns across privacy law, AI governance, financial regulation, and cyber compliance. Updated as I learn." />
+        sub="Simple explainers across privacy law, AI governance, financial regulation and cyber compliance. Updated as I learn." />
       
       <section className="articles">
         <div className="wrap">
