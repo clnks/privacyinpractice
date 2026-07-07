@@ -262,16 +262,25 @@ const HOME_SECTIONS = [
   num: "I.",
   label: "The roadmap",
   blurb:
-  "Four tracks, sixteen phases — the structured path from zero to data protection professional.",
+  "Four tracks, sixteen phases. The structured path from zero to data protection professional. Built from real job requirements, not a textbook.",
   bg: "lavender",
   badge: "16 phases"
+},
+{
+  href: "./career.html",
+  num: "II.",
+  label: "Career hub",
+  blurb:
+  "CV checklist, interview prep, salary data, UK employer list, STAR practice. The practical side of actually getting hired.",
+  bg: "mint",
+  badge: "50+ tools"
 },
 {
   href: "./articles.html",
   num: "III.",
   label: "Articles",
   blurb:
-  "Plain-English explainers on GDPR, ICO enforcement, AI governance and the cloud.",
+  "Plain-English explainers on GDPR, ICO enforcement, AI governance and cloud risk. Written for practitioners, not lawyers.",
   bg: "sun",
   badge: "5 published"
 },
@@ -280,7 +289,7 @@ const HOME_SECTIONS = [
   num: "IV.",
   label: "Resources",
   blurb:
-  "Courses, ICO guidance, books, free tools, podcasts and communities — what's most useful at each stage.",
+  "Courses, ICO guidance, books, free tools, podcasts and communities. Sorted by what's most useful at each stage.",
   bg: "paper",
   badge: "30+ links"
 }];
@@ -291,8 +300,9 @@ function HomePreview() {
     <section className="home-preview">
       <div className="wrap">
         <header className="home-preview-head">
-          <span className="eyebrow">What's inside</span>
-          <h2>Four ways in.</h2>
+          <span className="eyebrow">What's here</span>
+          <h2>Four sections. One goal.</h2>
+          <p className="home-preview-intro">Privacy in Practice is split into four parts. The roadmap is the spine. Everything else sits around it. You do not need to go in order.</p>
         </header>
         <div className="home-preview-grid">
           {HOME_SECTIONS.map((s) =>

@@ -2195,11 +2195,6 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
 }
 .home-preview-head {
   margin-bottom: 40px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
 }
 .home-preview-head h2 {
   font-family: var(--display);
@@ -2207,7 +2202,16 @@ footer h5 { color: rgba(245, 237, 224, 0.55); }
   font-size: clamp(40px, 5vw, 64px);
   letter-spacing: -0.025em;
   line-height: 0.95;
-  margin: 6px 0 0;
+  margin: 6px 0 16px;
+}
+.home-preview-intro {
+  font-family: var(--sans);
+  font-size: clamp(16px, 1.5vw, 18px);
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 540px;
+  margin: 0;
+  opacity: 0.75;
 }
 .home-preview-grid {
   display: grid;
