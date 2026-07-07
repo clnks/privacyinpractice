@@ -262,7 +262,7 @@ const HOME_SECTIONS = [
   num: "I.",
   label: "The roadmap",
   blurb:
-  "Four tracks, sixteen phases. The structured path from zero to data protection professional. Built from real job requirements, not a textbook.",
+  "Four tracks, sixteen phases. The structured path from zero to privacy and regulation professional. Built from real job requirements, not a textbook.",
   bg: "lavender",
   badge: "16 phases"
 },
@@ -357,7 +357,7 @@ function Hero({ data }) {
               </span>
             </h1>
             <p className="lede reveal">
-              A <span className="hl">free, structured roadmap</span> for anyone building a career in data protection and privacy — written by someone actively on this journey. No paywalls, no fluff, no gatekeeping.
+              A <span className="hl">free, structured roadmap</span> for anyone building a career in privacy, risk, or regulation — written by someone actively on this journey. No paywalls, no fluff, no gatekeeping.
             </p>
             <div className="cta-row reveal">
               <a className="sticker-cta" href="./roadmap.html">
@@ -398,7 +398,7 @@ function Mission() {
         <div className="mission-grid">
           <div className="big-q" aria-hidden="true">“</div>
           <div className="mission-quote">
-            Data protection has almost no equivalent of the <i>public learning resources</i> that exist in cybersecurity. So I’m <i>building it</i>.
+            Privacy law and regulation have almost no equivalent of the <i>public learning resources</i> that exist in cybersecurity. So I’m <i>building it</i>.
           </div>
           <div className="mission-byline">
             <b>Clarissa Ankrah</b>
@@ -414,17 +414,21 @@ function Mission() {
 function Ribbon() {
   const items = [
   "UK GDPR",
-  "DPA 2018",
-  "Article 22",
   "EU AI Act",
+  "NIS2",
+  "FCA conduct rules",
   "DSARs",
+  "MLR 2017",
+  "ISO 42001",
+  "Consumer Duty",
   "DPIAs",
-  "ROPAs",
-  "Article 28",
-  "Privacy by design",
-  "International transfers",
+  "FATF recommendations",
   "ICO enforcement",
-  "Cloud compliance"];
+  "CRISC",
+  "Article 28",
+  "Open Banking",
+  "Privacy by design",
+  "NCSC CAF"];
 
   const loop = [...items, ...items];
   return (
@@ -605,7 +609,7 @@ function Roadmap({ tracks }) {
         id="roadmap"
         num="I."
         eyebrow="The Complete Path"
-        title="From zero to data protection professional"
+        title="From zero to privacy and regulation professional"
         sub="Four tracks covering the foundations, operations, specialist knowledge, and the career tools you need. Built from real job requirements and active study — not from a textbook." />
 
       <div className="wrap roadmap-progress-wrap">
@@ -708,8 +712,8 @@ function Articles({ data }) {
         id="articles"
         num="III."
         eyebrow="Articles"
-        title="Data protection, explained clearly"
-        sub="ICO enforcement breakdowns, GDPR concept explainers, AI governance and cloud data protection. Updated as I learn." />
+        title="Regulation, explained clearly"
+        sub="Plain-English breakdowns across privacy law, AI governance, financial regulation, and cyber compliance. Updated as I learn." />
       
       <section className="articles">
         <div className="wrap">
@@ -821,7 +825,7 @@ function Footer() {
         <div className="foot-grid">
           <div>
             <div className="colophon">
-              A field journal of becoming a <i>data protection practitioner</i>, in public.
+              A field journal of becoming a <i>privacy and regulation practitioner</i>, in public.
             </div>
           </div>
           <div>

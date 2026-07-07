@@ -7,7 +7,7 @@ window.SITE_DATA = {
   },
   hero: {
     eyebrow: "A field journal",
-    title_a: "Data protection,",
+    title_a: "Privacy & regulation,",
     title_b: "in practice.",
     lede:
       "A free, structured roadmap for anyone building a career in data protection and privacy — written by someone actively on this journey. No paywalls, no fluff, no gatekeeping.",
