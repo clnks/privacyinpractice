@@ -3,7 +3,8 @@
    shared template (area.jsx) renders them uniformly.
 
    Add new areas by appending to AREAS. Keep IDs stable — they're used as
-   file names (area-<id>.html) and saved into localStorage for progress. */
+   file names (area-<id>.html) and saved into localStorage for progress.
+   Display order is alphabetical by label (sorted below). */
 
 window.AREAS = [
   /* ─── 1. Data Protection / Privacy ──────────────────────────── */
@@ -391,3 +392,7 @@ window.AREAS = [
     ],
   },
 ];
+
+window.AREAS.sort(function (a, b) {
+  return a.label.localeCompare(b.label, "en", { sensitivity: "base" });
+});

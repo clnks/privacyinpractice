@@ -133,6 +133,15 @@ function Nav({ active, areaActive }) {
     };
   }, []);
 
+  React.useEffect(() => {
+    const navEl = navRef.current;
+    if (!navEl) return;
+    const onScroll = () => navEl.classList.toggle("is-scrolled", window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const closeAll = () => { setOpenId(null); setMobileOpen(false); };
   const TOOL_IDS = ["study","quiz","decisions","scenarios","calculators","glossary","artefacts","reading"];
 

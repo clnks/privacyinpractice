@@ -2,11 +2,11 @@
 const { useState: useS, useEffect: useE } = React;
 
 const CAREER_AREAS_META = [
-  { id: "dp",      label: "Data Protection",      glyph: "§"  },
   { id: "ai",      label: "AI Governance",         glyph: "◬"  },
   { id: "aml",     label: "AML & Financial Crime", glyph: "⚑"  },
-  { id: "conduct", label: "Financial Conduct",     glyph: "¶"  },
   { id: "cyber",   label: "Cyber Security",        glyph: "⊗"  },
+  { id: "dp",      label: "Data Protection",      glyph: "§"  },
+  { id: "conduct", label: "Financial Conduct",     glyph: "¶"  },
   { id: "fintech", label: "FinTech Regulation",    glyph: "◇"  },
 ];
 

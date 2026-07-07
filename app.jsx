@@ -1,55 +1,55 @@
 /* === Privacy in Practice — main app + tweaks === */
 const { useState, useEffect: useEff } = React;
 
-// === Curated typography options ===
+// === Typography ===
 const FONT_PAIRINGS = {
-  "Chunky · SIFONN": {
-    display: '"SIFONN PRO", sans-serif',
-    serif: '"Instrument Serif", Georgia, serif',
-    sans: '"Bricolage Grotesque", sans-serif',
-    mono: '"Bricolage Grotesque", sans-serif',
+  "Inter · Red Hat Display": {
+    display: '"Red Hat Display", sans-serif',
+    serif: '"Inter", sans-serif',
+    sans: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+    mono: '"Inter", sans-serif',
   },
-  "Modern · Inter Tight": {
-    display: '"Inter Tight", "Bricolage Grotesque", sans-serif',
-    serif: '"Instrument Serif", Georgia, serif',
-    sans: '"Inter Tight", -apple-system, sans-serif',
-    mono: '"Inter Tight", sans-serif',
-  },
-  "Editorial · Fraunces": {
-    display: '"Fraunces", Georgia, serif',
-    serif: '"Fraunces", Georgia, serif',
-    sans: '"Inter Tight", sans-serif',
-    mono: '"Inter Tight", sans-serif',
+  "Inter only": {
+    display: '"Inter", sans-serif',
+    serif: '"Inter", sans-serif',
+    sans: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+    mono: '"Inter", sans-serif',
   },
 };
 
 const PALETTES = {
-  "Refined": {
-    cream: "#f2f2ee", paper: "#fafaf8",
-    lavender: "#4a7c14", lavender2: "#3a6210",
-    plum: "#141414",
-    sun: "#a4d62c", coral: "#928c84",
-    blush: "#e4e4e0", mint: "#c4b8dc",
+  "Blue & Stone": {
+    cream: "#f6f5f2", paper: "#fdfcfa",
+    lavender: "#58a8d4", lavender2: "#3d92c0",
+    plum: "#1a2332",
+    sun: "#d4b896", coral: "#a39e96",
+    blush: "#f0ebe3", mint: "#e4ebe6",
+    accentStrong: "#2b7cb3", accentSoft: "#e4f2fa",
+    bg2: "#ebeae6", ink2: "#2d3a4d", muted: "#6b6560",
   },
-  "Lavender & Butter": {
-    cream: "#f1e8d7", paper: "#f9f1e1",
-    lavender: "#c4b1dd", lavender2: "#b39fd0",
-    plum: "#0d0a10",
-    sun: "#f4e070", coral: "#d4a574",
-    blush: "#e8d4c0", mint: "#d4ddc4",
+  "Baby Blue": {
+    cream: "#eef6fb", paper: "#f8fbfe",
+    lavender: "#6bb8e8", lavender2: "#4da3db",
+    plum: "#1a2332",
+    sun: "#a8d8f0", coral: "#94a8b8",
+    blush: "#d4e8f4", mint: "#cce9f7",
+    accentStrong: "#2b7cb3", accentSoft: "#e3f2fa",
+    bg2: "#dceaf4", ink2: "#2d3a4d", muted: "#5a6b7d",
   },
-  "Sage & Cream": {
-    cream: "#eeece1", paper: "#f5f4ea",
-    lavender: "#c8d5bb", lavender2: "#b6c5a8",
-    plum: "#1a1a18",
-    sun: "#e8d050", coral: "#c89580",
-    blush: "#e8d8c4", mint: "#c5d4b8",
+  "Soft Sky": {
+    cream: "#f4f6f8", paper: "#fafbfc",
+    lavender: "#5aadde", lavender2: "#4499cc",
+    plum: "#152030",
+    sun: "#c9b89a", coral: "#949088",
+    blush: "#ede8e0", mint: "#e2ebe8",
+    accentStrong: "#3a8fc4", accentSoft: "#eaf4fa",
+    bg2: "#e8eaec", ink2: "#2a3848", muted: "#646870",
   },
 };
 
 function applyTokens({ palette, pairing }) {
-  const p = PALETTES[palette] || PALETTES["Lavender & Butter"];
-  const f = FONT_PAIRINGS[pairing] || FONT_PAIRINGS["Chunky · SIFONN"];
+  const p = PALETTES[palette] || PALETTES["Blue & Stone"];
+  const f = FONT_PAIRINGS[pairing] || FONT_PAIRINGS["Inter · Red Hat Display"];
   const r = document.documentElement.style;
   r.setProperty("--cream", p.cream);
   r.setProperty("--paper", p.paper);
@@ -61,8 +61,13 @@ function applyTokens({ palette, pairing }) {
   r.setProperty("--blush", p.blush);
   r.setProperty("--mint", p.mint);
   r.setProperty("--bg", p.cream);
+  r.setProperty("--bg-2", p.bg2 || p.cream);
   r.setProperty("--ink", p.plum);
+  r.setProperty("--ink-2", p.ink2 || p.plum);
+  r.setProperty("--muted", p.muted || "#5f6772");
   r.setProperty("--accent", p.lavender);
+  r.setProperty("--accent-strong", p.accentStrong || p.lavender2);
+  r.setProperty("--accent-soft", p.accentSoft || p.blush);
   r.setProperty("--display", f.display);
   r.setProperty("--serif", f.serif);
   r.setProperty("--sans", f.sans);
@@ -70,8 +75,8 @@ function applyTokens({ palette, pairing }) {
 
   // Lazy-load any fonts referenced by the pairing
   const FONT_URLS = {
-    "Inter Tight": "Inter+Tight:wght@400;500;600;700;800",
-    "Fraunces": "Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800",
+    "Inter": "Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900",
+    "Red Hat Display": "Red+Hat+Display:ital,wght@0,300..900;1,300..900",
   };
   const stack = f.display + " " + f.sans;
   Object.entries(FONT_URLS).forEach(([fam, qs]) => {
@@ -89,11 +94,11 @@ function applyTokens({ palette, pairing }) {
 }
 
 const DEFAULTS = /*EDITMODE-BEGIN*/{
-  "palette": "Refined",
-  "pairing": "Chunky · SIFONN",
+  "palette": "Blue & Stone",
+  "pairing": "Inter · Red Hat Display",
   "showRibbon": true,
   "showMission": true,
-  "heroItalicColor": "#f9f1e1",
+  "heroItalicColor": "#d4b896",
   "studyShowAnswers": false,
   "studyTrack": "all"
 }/*EDITMODE-END*/;
@@ -111,7 +116,7 @@ function Tweaks({ t, setTweak }) {
         <TweakColor
           label="Hero italic"
           value={t.heroItalicColor}
-          options={["#f9f1e1", "#0d0a10", "#f4e070", "#d4a574", "#b39fd0"]}
+          options={["#d4b896", "#fdfcfa", "#58a8d4", "#a39e96", "#1a2332"]}
           onChange={(v) => setTweak("heroItalicColor", v)}
         />
       </TweakSection>
